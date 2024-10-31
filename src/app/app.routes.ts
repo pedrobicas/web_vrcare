@@ -5,6 +5,7 @@ import { TableComponent } from './component/table/table.component';
 import { StepperComponent } from './component/stepper/stepper.component';
 import { SessionsLiveComponent } from './component/sessions-live/sessions-live.component';
 import { SessionsRecordedComponent } from './component/sessions-recorded/sessions-recorded.component';
+import { StudentsComponent } from './component/students/students.component';
 
 export const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,4 +15,5 @@ export const routes: Routes = [
   { path: 'stepper', title:"Stepper", component: StepperComponent },
   { path: 'sessions-live', component: SessionsLiveComponent },
   { path: 'sessions-recorded', component: SessionsRecordedComponent },
+  { path: 'students', component: StudentsComponent },
 ];

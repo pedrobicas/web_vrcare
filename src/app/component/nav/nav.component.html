@@ -18,27 +18,36 @@
         Sessões gravadas
       </a>
       <a mat-list-item [routerLink]="['/table']">
-        <mat-icon class="menu-icon">assessment</mat-icon>
-        Relatórios
-      </a>
-      <a mat-list-item [routerLink]="['/table']">
         <mat-icon class="menu-icon">group</mat-icon>
         Alunos
       </a>
-      <a mat-list-item [routerLink]="['/stepper']">
+      <a mat-list-item [routerLink]="['/students']">
         <mat-icon class="menu-icon">school</mat-icon>
         Turma
       </a>
     </mat-nav-list>
   </mat-sidenav>
+  
   <mat-sidenav-content>
     <mat-toolbar color="primary" class="app-toolbar">
       <button mat-icon-button *ngIf="isHandset$ | async" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span class="app-title">Painel de Controle</span>
+      
+      <span class="app-title">{{ pageTitle }}</span>
+      
+      <span class="spacer"></span>
+
+
+      <button mat-icon-button aria-label="Notificações">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      
+      <button mat-icon-button aria-label="Perfil">
+        <mat-icon>account_circle</mat-icon>
+      </button>
     </mat-toolbar>
-    <!-- Add Content Here -->
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
