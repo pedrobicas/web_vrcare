@@ -1,0 +1,133 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Painel de Controle VR</h1>
+
+  <mat-grid-list cols="3" rowHeight="2:1" gutterSize="15px" *ngIf="!(isHandset$ | async); else mobileLayout">
+
+    <!-- Card Principal - Desempenho dos Alunos -->
+    <mat-grid-tile [colspan]="2" [rowspan]="2" class="grid-tile">
+      <mat-card class="performance-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">Desempenho dos Alunos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="performance-card-content">
+          <div>Classificação de Alunos por Turma</div>
+          <div class="chart">
+            <canvas baseChart
+                    [datasets]="studentPerformanceData"
+                    [labels]="performanceLabels"
+                    [options]="chartOptions"
+                    type="line"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!-- Card à Direita - Programação e Treinamentos -->
+    <mat-grid-tile [colspan]="1" [rowspan]="3" class="grid-tile">
+      <mat-card class="training-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">Aulas de Treinamento</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+          <h3>Programação:</h3>
+          <ul>
+            <li *ngFor="let session of trainingSessions">{{ session }}</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!-- Card Inferior - Melhores Alunos -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1" class="grid-tile">
+      <mat-card class="top-students-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">Melhores Alunos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            <li *ngFor="let student of topStudents">
+              {{ student.name }} - Média: {{ student.average }} - Treinamentos: {{ student.completedTraining }}/{{ student.totalTraining }}
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!-- Card Inferior - Notificações -->
+    <mat-grid-tile [colspan]="1" [rowspan]="1" class="grid-tile">
+      <mat-card class="notifications-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">Notificações</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="notifications-card-content">
+          <ul>
+            <li *ngFor="let notification of notifications">{{ notification }}</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <!-- Layout para dispositivos móveis -->
+  <ng-template #mobileLayout>
+    <div class="mobile-card-container">
+      <mat-card class="performance-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">Desempenho dos Alunos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="performance-card-content">
+          <div>Classificação de Alunos por Turma</div>
+          <div class="chart">
+            <canvas baseChart
+                    [datasets]="studentPerformanceData"
+                    [labels]="performanceLabels"
+                    [options]="chartOptions"
+                    type="line"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="training-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">Aulas de Treinamento</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+          <h3>Programação:</h3>
+          <ul>
+            <li *ngFor="let session of trainingSessions">{{ session }}</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="top-students-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">Melhores Alunos</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            <li *ngFor="let student of topStudents">
+              {{ student.name }} - Média: {{ student.average }} - Treinamentos: {{ student.completedTraining }}/{{ student.totalTraining }}
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="notifications-card">
+        <mat-card-header>
+          <mat-card-title class="card-title">Notificações</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="notifications-card-content">
+          <ul>
+            <li *ngFor="let notification of notifications">{{ notification }}</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-template>
+</div>

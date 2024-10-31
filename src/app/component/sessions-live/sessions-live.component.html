@@ -1,0 +1,22 @@
+<div class="sessions-live-container">
+    <h1 class="mat-h1">Sessões ao Vivo</h1>
+  
+    <div class="sessions-cards-container">
+      <mat-card *ngFor="let session of upcomingSessions" class="session-card">
+        <img [src]="session.image" alt="Imagem da Sessão" class="session-image" />
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon class="live-icon">live_tv</mat-icon>
+            {{ session.title }}
+          </mat-card-title>
+          <mat-card-subtitle>
+            Aluno: {{ session.studentName }} - Turma: {{ session.className }}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <button mat-button (click)="joinSession(session)">Participar</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

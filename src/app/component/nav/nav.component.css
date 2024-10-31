@@ -1,0 +1,13 @@
+.sidenav {
+  width: 250px; /* Ajuste a largura conforme necessário */
+}
+
+.menu-icon {
+  vertical-align: middle; /* Alinha verticalmente o ícone com o texto */
+  margin-right: 16px; /* Espaçamento entre o ícone e o texto */
+}
+
+.mat-list-item {
+  display: flex; /* Use flexbox para alinhar os itens */
+  align-items: center; /* Alinha o conteúdo verticalmente no centro */
+}

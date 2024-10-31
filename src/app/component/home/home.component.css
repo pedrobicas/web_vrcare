@@ -1,0 +1,61 @@
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: flex-start; /* Mantém o conteúdo no topo */
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-bottom: 20px; /* Espaçamento entre o título e o painel */
+  text-align: center; /* Centraliza o título */
+}
+
+.mat-grid-list {
+  width: 100%; /* Faz o grid ocupar toda a largura disponível */
+}
+
+.grid-tile {
+  display: flex; /* Faz o card ocupar todo o espaço disponível */
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo do card */
+}
+
+.card-title {
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center; /* Centraliza o título do card */
+}
+
+.performance-card, .training-card, .top-students-card, .notifications-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  width: 100%; /* Faz o card ocupar toda a largura do tile */
+  background-color: rgba(241, 241, 241, 0.568);
+}
+
+.chart {
+  position: relative;
+  height: 300px;
+}
+
+.mobile-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center; /* Centraliza os cards no modo móvel */
+  width: 100%; /* Faz o container ocupar toda a largura */
+}
+
+@media (max-width: 600px) {
+  mat-grid-list {
+    display: none; /* Esconde o grid-list em dispositivos móveis */
+  }
+
+  .mobile-card-container {
+    padding: 10px; /* Adiciona um pouco de preenchimento ao container móvel */
+  }
+}

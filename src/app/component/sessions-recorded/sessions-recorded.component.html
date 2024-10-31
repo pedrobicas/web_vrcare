@@ -1,0 +1,19 @@
+<div class="sessions-recorded-container">
+    <h1 class="mat-h1">Sessões Gravadas</h1>
+    
+    <div class="sessions-cards-container">
+      <mat-card *ngFor="let session of recordedSessions" class="session-card">
+        <img [src]="session.image" alt="Imagem da Sessão" class="session-image" />
+        <mat-card-header>
+          <mat-card-title>{{ session.title }}</mat-card-title>
+          <mat-card-subtitle>
+            Aluno: {{ session.studentName }} - Turma: {{ session.className }}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <button mat-button (click)="viewSession(session)">Assistir</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

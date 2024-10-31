@@ -1,0 +1,35 @@
+.sessions-live-container {
+    padding: 20px;
+  }
+  
+  .sessions-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards quebrem a linha */
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    gap: 20px; /* Espaçamento entre os cards */
+  }
+  
+  .session-card {
+    width: 100%; /* A largura padrão será 100% em telas pequenas */
+    max-width: 300px; /* Define a largura máxima do card */
+    transition: transform 0.2s;
+    position: relative; /* Para posicionar o ícone de ao vivo corretamente */
+  }
+  
+  .session-card:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+  }
+  
+  .session-image {
+    width: 100%; /* Faz a imagem ocupar toda a largura do card */
+    height: auto; /* Mantém a proporção da imagem */
+  }
+  
+  .live-icon {
+    color: red; /* Cor do ícone de ao vivo */
+    vertical-align: middle; /* Alinha verticalmente com o texto */
+    position: absolute; /* Posiciona o ícone no canto superior */
+    top: 10px;
+    left: 10px;
+  }
+  
