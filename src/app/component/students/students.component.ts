@@ -1,38 +1,40 @@
 import { Component } from '@angular/core';
 import { MatTableModule } from '@angular/material/table'; // Para a tabela
-import { MatButtonModule } from '@angular/material/button'; // Para o botão
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common'; // Para pipes
 
 interface Student {
   name: string;
   email: string;
-  completedTrainings: number; // Número de treinamentos concluídos
+  completedTrainings: string; // Treinamentos, ex: "3/10"
   class: string; // Turma do aluno
   averageGrade: number; // Média de notas
+  priority: number; // Número de tarefas prioritárias
+  progressing: number; // Número de tarefas em progresso
+  mastering: number; // Número de tarefas dominadas
 }
 
 @Component({
   selector: 'app-students',
   standalone: true,
   imports: [
-    MatTableModule,
     CommonModule,
-    MatButtonModule // Se você ainda precisa de botões para ações
+    MatTableModule
   ],
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.css']
 })
 export class StudentsComponent {
   students: Student[] = [
-    { name: 'João Silva', email: 'joao@example.com', completedTrainings: 5, class: 'Turma A', averageGrade: 8.5 },
-    { name: 'Maria Oliveira', email: 'maria@example.com', completedTrainings: 3, class: 'Turma B', averageGrade: 7.0 },
-    { name: 'Pedro Santos', email: 'pedro@example.com', completedTrainings: 4, class: 'Turma A', averageGrade: 9.2 },
+    { name: 'Carlos Oliveira', email: 'carlos@example.com', completedTrainings: '3/10', class: 'A', averageGrade: 3.5, priority: 7, progressing: 2, mastering: 1 },
+    { name: 'Luiza Souza', email: 'luiza@example.com', completedTrainings: '7/10', class: 'A', averageGrade: 6.0, priority: 3, progressing: 5, mastering: 2 },
+    { name: 'Marina Santos', email: 'marina@example.com', completedTrainings: '10/10', class: 'A', averageGrade: 8.9, priority: 1, progressing: 3, mastering: 6 },
+    // Adicione mais alunos conforme necessário
   ];
-  
-  displayedColumns: string[] = ['name', 'email', 'completedTrainings', 'class', 'averageGrade', 'actions'];
 
-  deleteStudent(student: Student) {
-    // Lógica para excluir um aluno
-    this.students = this.students.filter(s => s !== student);
+  displayedColumns: string[] = ['name', 'completedTrainings', 'averageGrade', 'class', 'priority', 'progressing', 'mastering'];
+
+  getPriorityClass(priority: number): string {
+    return 'priority';
   }
+  
 }

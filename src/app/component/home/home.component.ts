@@ -1,91 +1,263 @@
-import { Component, inject } from '@angular/core';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatDatepickerModule, MatCalendar } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { BaseChartDirective } from 'ng2-charts';
-import { MatListModule } from '@angular/material/list';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import Chart from 'chart.js/auto';
+
+interface Student {
+  name: string;
+  score: number;
+  lastActivity: string;
+  avatar: string;
+  scoreColor: string;
+}
+
+interface Notification {
+  user: string;
+  message: string;
+  time: string;
+  avatar: string;
+}
+
+interface ScheduleEvent {
+  time: string;
+  title: string;
+  duration: string;
+  color: string;
+  participants: {
+    name: string;
+    avatar: string;
+  }[];
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
   imports: [
-    MatGridListModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
+    CommonModule,
     MatCardModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatListModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCalendar,
-    BaseChartDirective,
-    MatListModule,
-    CommonModule
+    MatTooltipModule,
   ]
 })
-export class HomeComponent {
-  private breakpointObserver = inject(BreakpointObserver);
+export class HomeComponent implements OnInit, AfterViewInit {
+  @ViewChild('performanceChart') chartCanvas!: ElementRef<HTMLCanvasElement>;
 
-  // Dados de desempenho dos alunos
-  public studentPerformanceData = [
-    { data: [85, 90, 78, 88, 80, 85, 90, 92, 95, 88, 87, 90], label: 'Turma A' },
-    { data: [80, 87, 92, 75, 85, 88, 90, 92, 94, 85, 83, 88], label: 'Turma B' },
-    { data: [75, 80, 85, 90, 82, 84, 86, 88, 89, 87, 86, 85], label: 'Turma C' },
-    { data: [88, 84, 90, 92, 91, 89, 88, 87, 86, 88, 90, 92], label: 'Turma D' }
+  topStudents: Student[] = [
+    { 
+      name: 'Samuel Mendes', 
+      score: 95, 
+      lastActivity: 'Última atividade: 2h atrás', 
+      avatar: 'assets/avatar1.jpg',
+      scoreColor: '#2196f3'
+    },
+    { 
+      name: 'Carla Santos', 
+      score: 92, 
+      lastActivity: 'Última atividade: 3h atrás', 
+      avatar: 'assets/avatar2.jpg',
+      scoreColor: '#4CAF50'
+    },
+    { 
+      name: 'Sofia Marques', 
+      score: 88, 
+      lastActivity: 'Última atividade: 4h atrás', 
+      avatar: 'assets/avatar3.jpg',
+      scoreColor: '#ff9800'
+    },
   ];
 
-  // Atualização feita aqui para incluir todos os meses
-  public performanceLabels = [
-    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", 
-    "Junho", "Julho", "Agosto", "Setembro", "Outubro", 
-    "Novembro", "Dezembro"
-  ];
-
-  // Opções do gráfico
-  public chartOptions: any = {
-    responsive: true,
-    scales: {
-      yAxes: [{ ticks: { max: 100, min: 0 } }],
+  notifications: Notification[] = [
+    { 
+      user: 'Daniel Oliveira', 
+      message: 'Enviou uma nova atividade para revisão', 
+      time: '2h atrás', 
+      avatar: 'assets/avatar4.jpg' 
+    },
+    { 
+      user: 'Lucas Alves', 
+      message: 'Completou o módulo 3 com média 92', 
+      time: '3h atrás', 
+      avatar: 'assets/avatar5.jpg' 
+    },
+    { 
+      user: 'Maria Costa', 
+      message: 'Comentou em sua última atividade', 
+      time: '4h atrás', 
+      avatar: 'assets/avatar6.jpg' 
     }
-  };
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-  .pipe(
-    map(result => result.matches),
-    shareReplay()
-  );
-  // Dados para o calendário e programação
-  public selectedDate: Date | null = null;
-  public trainingSessions = [
-    "Treinamento em Laparoscopia:  10:00 - 12:00",
-    "Alice - Sessão acompanhada:  13:00 - 14:30",
-    "Mariana - Sessão acompanhada:  15:00 - 16:30",
   ];
 
-  // Notificações de estudantes
-  public notifications = [
-    "Alice: Pergunta sobre o treinamento de amanhã.",
-    "Lucas: Solicitação de revisão da aula passada.",
-    "Mariana: Dúvida sobre a atividade prática."
+  todaySchedule: ScheduleEvent[] = [
+    {
+      time: '09:00',
+      title: 'Aula de VR',
+      duration: '1h 30min',
+      color: '#2196f3',
+      participants: [
+        { name: 'João Silva', avatar: 'assets/avatar7.jpg' },
+        { name: 'Maria Costa', avatar: 'assets/avatar6.jpg' },
+        { name: 'Pedro Santos', avatar: 'assets/avatar8.jpg' }
+      ]
+    },
+    {
+      time: '12:00',
+      title: 'Aula de VR',
+      duration: '1h 30min',
+      color: '#2196f3',
+      participants: [
+        { name: 'João Silva', avatar: 'assets/avatar7.jpg' },
+        { name: 'Maria Costa', avatar: 'assets/avatar6.jpg' },
+        { name: 'Pedro Santos', avatar: 'assets/avatar8.jpg' }
+      ]
+    },
   ];
 
-  // Dados dos melhores alunos
-  public topStudents = [
-    { name: "Alice", average: 90, completedTraining: 7, totalTraining: 10 },
-    { name: "Lucas", average: 85, completedTraining: 9, totalTraining: 10 },
-    { name: "Mariana", average: 88, completedTraining: 8, totalTraining: 10 },
-    { name: "Pedro", average: 92, completedTraining: 10, totalTraining: 10 }
-  ];
+  ngOnInit() {}
 
-  constructor() { }
+  ngAfterViewInit() {
+    this.setupChart();
+  }
 
-  public chartClicked(e: any): void { console.log(e); }
-  public chartHovered(e: any): void { console.log(e); }
+  private setupChart(): void {
+    const ctx = this.chartCanvas.nativeElement.getContext('2d');
+    if (ctx) {
+      // Gradientes de cor para as turmas
+      const gradientFillA = ctx.createLinearGradient(0, 0, 0, 400);
+      gradientFillA.addColorStop(0, 'rgba(33, 150, 243, 0.2)');
+      gradientFillA.addColorStop(1, 'rgba(33, 150, 243, 0)');
+
+      const gradientFillB = ctx.createLinearGradient(0, 0, 0, 400);
+      gradientFillB.addColorStop(0, 'rgba(76, 175, 80, 0.2)');
+      gradientFillB.addColorStop(1, 'rgba(76, 175, 80, 0)');
+
+      const gradientFillC = ctx.createLinearGradient(0, 0, 0, 400);
+      gradientFillC.addColorStop(0, 'rgba(255, 87, 34, 0.2)');
+      gradientFillC.addColorStop(1, 'rgba(255, 87, 34, 0)');
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out'],
+          datasets: [
+            {
+              label: 'Turma A',
+              data: [75, 82, 85, 90, 85, 88, 92, 88, 90, 85],
+              borderColor: '#2196f3',
+              backgroundColor: gradientFillA,
+              tension: 0.4,
+              fill: true,
+              borderWidth: 2,
+              pointRadius: 4,
+              pointBackgroundColor: '#2196f3',
+              pointHoverBackgroundColor: '#1E88E5',
+              pointBorderColor: '#fff',
+              pointBorderWidth: 2,
+              pointHoverRadius: 6
+            },
+            {
+              label: 'Turma B',
+              data: [70, 78, 80, 85, 80, 83, 87, 83, 85, 80],
+              borderColor: '#4CAF50',
+              backgroundColor: gradientFillB,
+              tension: 0.4,
+              fill: true,
+              borderWidth: 2,
+              pointRadius: 4,
+              pointBackgroundColor: '#4CAF50',
+              pointHoverBackgroundColor: '#43A047',
+              pointBorderColor: '#fff',
+              pointBorderWidth: 2,
+              pointHoverRadius: 6
+            },
+            {
+              label: 'Turma C',
+              data: [68, 75, 78, 82, 78, 81, 85, 81, 83, 78],
+              borderColor: '#FF5722',
+              backgroundColor: gradientFillC,
+              tension: 0.4,
+              fill: true,
+              borderWidth: 2,
+              pointRadius: 4,
+              pointBackgroundColor: '#FF5722',
+              pointHoverBackgroundColor: '#E64A19',
+              pointBorderColor: '#fff',
+              pointBorderWidth: 2,
+              pointHoverRadius: 6
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                font: {
+                  size: 14
+                },
+                color: '#333'
+              }
+            },
+            tooltip: {
+              enabled: true,
+              backgroundColor: 'rgba(0,0,0,0.7)',
+              titleFont: {
+                size: 14,
+                weight: 'bold'
+              },
+              bodyFont: {
+                size: 12
+              },
+              borderColor: '#eee',
+              borderWidth: 1
+            }
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: '#666',
+                font: {
+                  size: 13
+                }
+              },
+              grid: {
+                display: false
+              }
+            },
+            y: {
+              max: 100,
+              ticks: {
+                color: '#666',
+                font: {
+                  size: 13
+                },
+                stepSize: 10
+              },
+              grid: {
+                color: 'rgba(0, 0, 0, 0.1)',
+                lineWidth: 1
+              }
+            }
+          }
+        }
+      });
+    }
+  }
+
+
+
 }

@@ -1,0 +1,103 @@
+<div class="page-container">
+    <!-- Seção de Turma e Fotos de Alunos -->
+    <div class="turma-header">
+      <mat-form-field appearance="outline">
+        <mat-label>Turma</mat-label>
+        <mat-select [(value)]="turmaSelecionada">
+          <mat-option value="Turma A">Turma A</mat-option>
+          <mat-option value="Turma B">Turma B</mat-option>
+          <mat-option value="Turma C">Turma C</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <div class="alunos-fotos">
+        <img *ngFor="let aluno of ranking" [src]="'/assets/avatar.png'" class="avatar" alt="Foto do aluno" />
+        <span>+15</span>
+      </div>
+    </div>
+  
+    <!-- Média de Pontuação e Treinamentos, Ranking e Grupos de Alunos -->
+    <div class="info-section">
+      <div class="media-info">
+        <div class="media-card">
+          <p>Média de pontuação</p>
+          <h2>{{ mediaPontuacao }}</h2>
+        </div>
+        <div class="media-card">
+          <p>Média de treinamentos concluídos</p>
+          <h2>{{ mediaTreinamentosConcluidos }}</h2>
+        </div>
+      </div>
+  
+      <div class="ranking-section">
+        <h3>Ranking</h3>
+        <div class="ranking-list">
+          <div *ngFor="let aluno of ranking" class="ranking-item">
+            <span class="ranking-position">{{ aluno.posicao }}</span>
+            <p class="ranking-name">{{ aluno.nome }}</p>
+            <span class="ranking-treinamentos">{{ aluno.treinamentos }}</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="status-groups">
+        <div *ngFor="let grupo of grupos" [ngStyle]="{ 'background-color': grupo.cor }" class="status-card">
+          <h2>{{ grupo.quantidade }}</h2>
+          <p>{{ grupo.descricao }}</p>
+          <p>Média: {{ grupo.media }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Tabela de Alunos -->
+    <div class="alunos-tabela-container">
+      <table mat-table [dataSource]="alunos" class="alunos-tabela">
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef> Nome Completo </th>
+          <td mat-cell *matCellDef="let aluno">
+            <div class="aluno-info">
+              <img src="/assets/avatar.png" class="avatar" alt="Foto do aluno" />
+              <span>{{ aluno.nome }}</span>
+            </div>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="treinamentos">
+          <th mat-header-cell *matHeaderCellDef> Treinamentos </th>
+          <td mat-cell *matCellDef="let aluno"> {{ aluno.treinamentos }} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="media">
+          <th mat-header-cell *matHeaderCellDef> Média </th>
+          <td mat-cell *matCellDef="let aluno"> 
+            <span [ngClass]="{'media-baixa': aluno.media < 5, 'media-alta': aluno.media >= 5}">{{ aluno.media }}</span>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="precisaAtencao">
+          <th mat-header-cell *matHeaderCellDef> Precisa de Atenção </th>
+          <td mat-cell *matCellDef="let aluno">
+            <span class="chip red">{{ aluno.precisaAtencao }}</span>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="progredindo">
+          <th mat-header-cell *matHeaderCellDef> Progredindo </th>
+          <td mat-cell *matCellDef="let aluno">
+            <span class="chip yellow">{{ aluno.progredindo }}</span>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="dominando">
+          <th mat-header-cell *matHeaderCellDef> Dominando </th>
+          <td mat-cell *matCellDef="let aluno">
+            <span class="chip green">{{ aluno.dominando }}</span>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="['nome', 'treinamentos', 'media', 'precisaAtencao', 'progredindo', 'dominando']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['nome', 'treinamentos', 'media', 'precisaAtencao', 'progredindo', 'dominando'];"></tr>
+      </table>
+    </div>
+  </div>
+  

@@ -6,11 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { DashboardComponent } from '../dashboard/dashboard.component';
 import { Router, NavigationEnd, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -24,10 +21,7 @@ import { Router, NavigationEnd, RouterLink, RouterOutlet } from '@angular/router
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatInputModule,
-    MatFormFieldModule,
     AsyncPipe,
-    DashboardComponent,
     RouterLink,
     RouterOutlet,
     CommonModule
@@ -42,11 +36,14 @@ export class NavComponent {
     );
 
   pageTitle: string = 'Visão Geral';
+  pageSubtitle: string = ''; // Adicione o subtítulo aqui se necessário
+  currentRoute: string = '/';
 
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.updatePageTitle(event.urlAfterRedirects);
+        this.currentRoute = event.urlAfterRedirects;
       }
     });
   }
@@ -55,22 +52,40 @@ export class NavComponent {
     switch (url) {
       case '/':
         this.pageTitle = 'Visão Geral';
+        this.pageSubtitle = 'Uma visão geral do sistema'; // Exemplo de subtítulo
         break;
       case '/sessions-live':
         this.pageTitle = 'Sessões ao vivo';
+        this.pageSubtitle = 'Acesse as sessões ao vivo disponíveis';
         break;
       case '/sessions-recorded':
         this.pageTitle = 'Sessões gravadas';
+        this.pageSubtitle = 'Reviva as sessões gravadas';
         break;
-      case '/table':
-        this.pageTitle = 'Relatórios';
+      case '/students':
+        this.pageTitle = 'Alunos';
+        this.pageSubtitle = 'Gerencie os alunos';
         break;
-      case '/stepper':
-        this.pageTitle = 'Turma';
+      case '/class':
+        this.pageTitle = 'Turmas';
+        this.pageSubtitle = 'Detalhes das turmas';
         break;
       default:
         this.pageTitle = 'Painel de Controle';
+        this.pageSubtitle = 'Seja bem-vindo ao VRCare+! Aqui você pode gerenciar suas atividades de forma eficaz.';
         break;
     }
+  }
+
+  isActiveRoute(route: string): boolean {
+    return this.currentRoute === route;
+  }
+
+  closeDrawer(drawer: any) {
+    this.isHandset$.subscribe(isHandset => {
+      if (isHandset) {
+        drawer.close(); // Fecha o drawer apenas se for em um dispositivo móvel
+      }
+    }).unsubscribe(); // Limpa a assinatura após o uso
   }
 }

@@ -1,67 +1,379 @@
-.grid-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente */
-  justify-content: flex-start; /* Mantém o conteúdo no topo */
-  margin: 0;
-  padding: 20px;
-  box-sizing: border-box;
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr 400px; /* Coluna principal e coluna lateral */
+  gap: 24px; /* Espaçamento entre os cartões */
+  padding: 24px; /* Espaçamento interno */
+  background-color: #f5f5f5; /* Cor de fundo do dashboard */
+  min-height: calc(100vh - 64px); /* Altura mínima */
 }
 
-h1 {
-  margin-bottom: 20px; /* Espaçamento entre o título e o painel */
-  text-align: center; /* Centraliza o título */
+.right-column {
+  display: flex; /* Coluna lateral com flexbox */
+  flex-direction: column; /* Alinhamento vertical dos cartões */
+  gap: 24px; /* Espaçamento entre os cartões na coluna lateral */
 }
 
-.mat-grid-list {
-  width: 100%; /* Faz o grid ocupar toda a largura disponível */
+/* Cards Styling */
+mat-card {
+  border-radius: 12px; /* Bordas arredondadas */
+  background-color: white; /* Cor de fundo dos cartões */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra dos cartões */
+  transition: transform 0.2s, box-shadow 0.2s; /* Efeito ao passar o mouse */
 }
 
-.grid-tile {
-  display: flex; /* Faz o card ocupar todo o espaço disponível */
-  flex-direction: column;
-  align-items: stretch; /* Faz com que os cards ocupem toda a largura */
+mat-card:hover {
+  transform: translateY(-2px); /* Levanta o cartão ao passar o mouse */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra ao passar o mouse */
 }
 
-.card-title {
-  font-weight: bold;
-  color: #2c3e50;
-  text-align: center; /* Centraliza o título do card */
+mat-card-header {
+  padding: 20px; /* Padding interno do cabeçalho do cartão */
+  border-bottom: 1px solid #eee; /* Linha abaixo do cabeçalho */
 }
 
-.performance-card,
-.training-card,
-.top-students-card,
+mat-card-title {
+  margin: 0 !important; /* Remove margens */
+  font-size: 1.2rem !important; /* Tamanho da fonte do título */
+  font-weight: 500; /* Peso da fonte do título */
+  display: flex; /* Flexbox para alinhamento */
+  justify-content: space-between; /* Espaçamento entre itens do título */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+mat-card-content {
+  padding: 20px; /* Padding interno do conteúdo do cartão */
+}
+
+/* Row for Top Students and Notifications */
+.row {
+  display: flex; /* Flexbox para alinhar os cartões lado a lado */
+  gap: 24px; /* Espaço entre os cartões */
+  margin-top: 24px; /* Espaço acima da linha */
+  flex-wrap: wrap; /* Permite que os cartões se movam para a linha de baixo se não houver espaço */
+}
+
+/* Top Students Styling */
+.students-card,
 .notifications-card {
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s;
-  background-color: rgba(241, 241, 241, 0.568);
-  flex: 1; /* Permite que os cards cresçam igualmente */
-  margin: 10px; /* Adiciona espaço entre os cards */
-  min-width: 200px; /* Define uma largura mínima para os cards */
+  flex: 1; /* Faz com que ambos os cartões ocupem espaço igual */
+  min-width: 300px; /* Largura mínima para evitar que fiquem muito pequenos */
+  max-width: 100%; /* Garante que os cartões não excedam a largura do container */
 }
 
-.chart {
-  position: relative;
-  height: 300px;
-  width: 100%; /* Certifica-se de que o gráfico ocupa toda a largura do card */
+.students-grid {
+  display: flex; /* Flexbox para o layout dos alunos */
+  align-items: center; /* Alinhamento vertical */
+  flex-direction: column; /* Alinhamento em coluna */
 }
 
-.mobile-card-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center; /* Centraliza os cards no modo móvel */
-  width: 100%; /* Faz o container ocupar toda a largura */
+.student-card {
+  position: relative; /* Posição relativa para o ranking */
+  background-color: #f8f9fa; /* Cor de fundo dos cartões de aluno */
+  border-radius: 10px; /* Bordas arredondadas */
+  padding: 16px; /* Padding interno */
+  display: flex; /* Flexbox para alinhar os itens dentro do cartão */
+  align-items: center; /* Alinhamento vertical */
+  gap: 12px; /* Espaçamento entre itens dentro do cartão */
+  transition: transform 0.2s; /* Efeito ao passar o mouse */
 }
 
-@media (max-width: 600px) {
-  .mat-grid-list {
-    display: none; /* Esconde o grid-list em dispositivos móveis */
+.student-card:hover {
+  transform: translateY(-2px); /* Levanta o cartão ao passar o mouse */
+}
+
+.student-rank {
+  position: absolute; /* Posição absoluta para o ranking */
+  top: -8px; /* Alinhamento acima do cartão */
+  left: -8px; /* Alinhamento à esquerda do cartão */
+  width: 28px; /* Largura do ranking */
+  height: 28px; /* Altura do ranking */
+  background-color: #1976d2; /* Cor de fundo do ranking */
+  color: white; /* Cor do texto */
+  border-radius: 50%; /* Forma circular */
+  display: flex; /* Flexbox para centralização */
+  align-items: center; /* Alinhamento vertical */
+  justify-content: center; /* Centralização horizontal */
+  font-weight: 500; /* Peso da fonte do ranking */
+  font-size: 0.9rem; /* Tamanho da fonte do ranking */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra do ranking */
+}
+
+.student-avatar img {
+  width: 50px; /* Largura da imagem do aluno */
+  height: 50px; /* Altura da imagem do aluno */
+  border-radius: 50%; /* Forma circular */
+  object-fit: cover; /* Ajusta a imagem ao espaço */
+}
+
+.student-info {
+  flex: 1; /* Flexível para ocupar espaço restante */
+}
+
+.student-info h3 {
+  margin: 0; /* Remove margens */
+  font-size: 1rem; /* Tamanho da fonte do nome do aluno */
+  font-weight: 500; /* Peso da fonte */
+}
+
+.student-info p {
+  margin: 4px 0; /* Margem entre o nome e a última atividade */
+  font-size: 0.8rem; /* Tamanho da fonte da última atividade */
+  color: #666; /* Cor do texto da última atividade */
+}
+
+.student-score {
+  display: flex; /* Flexbox para alinhar o ícone e a pontuação */
+  align-items: center; /* Alinhamento vertical */
+  gap: 4px; /* Espaçamento entre ícone e pontuação */
+  font-weight: 500; /* Peso da fonte da pontuação */
+  color: #2196f3; /* Cor da pontuação */
+}
+
+/* Schedule Styling */
+.schedule-list {
+  display: flex; /* Flexbox para o layout da programação */
+  flex-direction: column; /* Alinhamento em coluna */
+  gap: 16px; /* Espaçamento entre os itens da programação */
+}
+
+.schedule-item {
+  display: flex; /* Flexbox para os eventos */
+  gap: 16px; /* Espaçamento entre eventos */
+}
+
+.time-slot {
+  display: flex; /* Flexbox para a linha do tempo */
+  flex-direction: column; /* Alinhamento em coluna */
+  align-items: center; /* Alinhamento central */
+  width: 60px; /* Largura fixa */
+}
+
+.time {
+  font-size: 0.9rem; /* Tamanho da fonte do tempo */
+  font-weight: 500; /* Peso da fonte */
+  color: #666; /* Cor do texto */
+}
+
+.time-line {
+  flex: 1; /* Ocupa o espaço restante */
+  width: 2px; /* Largura da linha do tempo */
+  background-color: #e0e0e0; /* Cor da linha do tempo */
+  margin: 8px 0; /* Margem entre os itens */
+}
+
+.event-card {
+  flex: 1; /* Ocupa o espaço restante */
+  background-color: #f8f9fa; /* Cor de fundo do evento */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 12px; /* Padding interno */
+}
+
+.event-header {
+  display: flex; /* Flexbox para o cabeçalho do evento */
+  justify-content: space-between; /* Espaçamento entre título e duração */
+  align-items: center; /* Centraliza verticalmente */
+  margin-bottom: 8px; /* Margem abaixo do cabeçalho */
+}
+
+.event-title {
+  font-weight: 500; /* Peso da fonte do título do evento */
+}
+
+.event-duration {
+  font-size: 0.8rem; /* Tamanho da fonte da duração */
+  color: #666; /* Cor do texto da duração */
+}
+
+.event-participants {
+  display: flex; /* Flexbox para os participantes */
+  gap: 4px; /* Espaçamento entre participantes */
+}
+
+.event-participants img {
+  width: 24px; /* Largura da imagem do participante */
+  height: 24px; /* Altura da imagem do participante */
+  border-radius: 50%; /* Forma circular */
+  border: 2px solid white; /* Borda branca */
+}
+
+/* Notifications Styling */
+.notifications-list {
+  display: flex; /* Flexbox para a lista de notificações */
+  flex-direction: column; /* Alinhamento em coluna */
+  gap: 16px; /* Espaçamento entre notificações */
+}
+
+.notification-item {
+  display: flex; /* Flexbox para cada notificação */
+  gap: 12px; /* Espaçamento entre o ícone e o texto da notificação */
+  padding: 12px; /* Padding interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  background-color: #f8f9fa; /* Cor de fundo da notificação */
+  transition: background-color 0.2s; /* Transição suave da cor de fundo */
+}
+
+.notification-item:hover {
+  background-color: #f0f0f0; /* Cor de fundo ao passar o mouse */
+}
+
+.notification-avatar img {
+  width: 40px; /* Largura da imagem do usuário */
+  height: 40px; /* Altura da imagem do usuário */
+  border-radius: 50%; /* Forma circular */
+  object-fit: cover; /* Ajusta a imagem ao espaço */
+}
+
+.notification-content {
+  flex: 1; /* Flexível para ocupar espaço restante */
+}
+
+.notification-header {
+  display: flex; /* Flexbox para o cabeçalho da notificação */
+  justify-content: space-between; /* Espaçamento entre usuário e hora */
+  align-items: center; /* Centraliza verticalmente */
+  margin-bottom: 4px; /* Margem abaixo do cabeçalho */
+}
+
+.notification-user {
+  font-weight: 500; /* Peso da fonte do nome do usuário */
+}
+
+.notification-time {
+  font-size: 0.8rem; /* Tamanho da fonte do tempo */
+  color: #666; /* Cor do texto do tempo */
+}
+
+.notification-message {
+  margin: 0; /* Remove margens */
+  font-size: 0.9rem; /* Tamanho da fonte da mensagem */
+  color: #444; /* Cor do texto da mensagem */
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard-container {
+    grid-template-columns: 1fr; /* Uma única coluna em telas menores */
+    padding: 16px; /* Ajuste de padding */
+    gap: 16px; /* Redução do espaçamento entre os cartões */
   }
 
-  .mobile-card-container {
-    padding: 10px; /* Adiciona um pouco de preenchimento ao container móvel */
+  .students-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Flexível para colunas em grade */
   }
+
+  .row {
+    flex-direction: column; /* Muda para coluna em telas menores */
+    margin-top: 16px; /* Ajusta o espaço entre os cartões em telas menores */
+  }
+
+  .students-card,
+  .notifications-card {
+    min-width: auto; /* Remover largura mínima em telas menores */
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 12px; /* Ajuste de padding para dispositivos móveis */
+    gap: 12px; /* Redução do espaçamento entre os cartões */
+  }
+
+  .right-column {
+    gap: 16px; /* Espaçamento entre os cartões na coluna lateral */
+  }
+
+  .students-grid {
+    flex-direction: column; /* Muda para coluna em telas muito pequenas */
+    gap: 16px; /* Espaço entre os alunos */
+  }
+}
+/* Top Students Card Styling */
+.students-card {
+  background-color: #ffffff; /* Cor de fundo do cartão */
+  border-radius: 12px; /* Bordas arredondadas */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+  padding: 20px; /* Padding interno */
+  transition: transform 0.2s, box-shadow 0.2s; /* Efeito ao passar o mouse */
+}
+
+.students-card:hover {
+  transform: translateY(-4px); /* Levanta o cartão ao passar o mouse */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
+}
+
+.students-card h2 {
+  margin: 0; /* Remove margens do título */
+  font-size: 1.5rem; /* Tamanho do título */
+  color: #1976d2; /* Cor do título */
+  border-bottom: 2px solid #1976d2; /* Linha abaixo do título */
+  padding-bottom: 8px; /* Espaço abaixo do título */
+}
+
+/* Individual Student Card Styling */
+.student-card {
+  position: relative; /* Para posicionamento do ranking */
+  background-color: #f8f9fa; /* Cor de fundo do cartão de aluno */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 16px; /* Padding interno */
+  display: flex; /* Flexbox para alinhamento */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 12px; /* Espaçamento entre itens dentro do cartão */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra dos cartões de aluno */
+  transition: transform 0.2s; /* Efeito ao passar o mouse */
+}
+
+.student-card:hover {
+  transform: scale(1.02); /* Aumenta o cartão ao passar o mouse */
+}
+
+/* Notifications Card Styling */
+.notifications-card {
+  background-color: #ffffff; /* Cor de fundo do cartão de notificações */
+  border-radius: 12px; /* Bordas arredondadas */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+  padding: 20px; /* Padding interno */
+  transition: transform 0.2s, box-shadow 0.2s; /* Efeito ao passar o mouse */
+}
+
+.notifications-card:hover {
+  transform: translateY(-4px); /* Levanta o cartão ao passar o mouse */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
+}
+
+.notifications-card h2 {
+  margin: 0; /* Remove margens do título */
+  font-size: 1.5rem; /* Tamanho do título */
+  color: #ff5722; /* Cor do título das notificações */
+  border-bottom: 2px solid #ff5722; /* Linha abaixo do título */
+  padding-bottom: 8px; /* Espaço abaixo do título */
+}
+
+/* Individual Notification Item Styling */
+.notification-item {
+  display: flex; /* Flexbox para cada notificação */
+  gap: 12px; /* Espaçamento entre o ícone e o texto da notificação */
+  padding: 12px; /* Padding interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  background-color: #f9f9f9; /* Cor de fundo da notificação */
+  transition: background-color 0.3s; /* Transição suave da cor de fundo */
+}
+
+.notification-item:hover {
+  background-color: #e0f7fa; /* Cor de fundo ao passar o mouse */
+}
+
+.notification-header {
+  display: flex; /* Flexbox para o cabeçalho da notificação */
+  justify-content: space-between; /* Espaçamento entre usuário e hora */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.notification-user {
+  font-weight: 600; /* Peso da fonte do nome do usuário */
+  color: #444; /* Cor do texto do usuário */
+}
+
+.notification-message {
+  font-size: 0.9rem; /* Tamanho da fonte da mensagem */
+  color: #666; /* Cor do texto da mensagem */
 }
