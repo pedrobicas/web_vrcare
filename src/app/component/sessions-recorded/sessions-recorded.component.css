@@ -1,26 +1,63 @@
 .sessions-recorded-container {
-    padding: 20px;
-  }
-  
-  .sessions-cards-container {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os cards quebrem a linha */
-    justify-content: center; /* Centraliza os cards horizontalmente */
-    gap: 20px; /* Espaçamento entre os cards */
-  }
-  
-  .session-card {
-    width: 100%; /* A largura padrão será 100% em telas pequenas */
-    max-width: 300px; /* Define a largura máxima do card */
-    transition: transform 0.2s;
-  }
-  
-  .session-card:hover {
-    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
-  }
-  
-  .session-image {
-    width: 100%; /* Faz a imagem ocupar toda a largura do card */
-    height: auto; /* Mantém a proporção da imagem */
-  }
-  
+  padding: 20px;
+}
+
+.sessions-cards-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os cards quebrem a linha */
+  justify-content: center; /* Centraliza os cards horizontalmente */
+  gap: 20px; /* Espaçamento entre os cards */
+}
+
+.session-card {
+  width: 100%; /* A largura padrão será 100% em telas pequenas */
+  max-width: 300px; /* Define a largura máxima do card */
+  transition: transform 0.2s;
+  border-radius: 12px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
+}
+
+.session-card:hover {
+  transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.session-image {
+  width: 100%; /* Faz a imagem ocupar toda a largura do card */
+  height: auto; /* Mantém a proporção da imagem */
+  border-top-left-radius: 12px; /* Bordas arredondadas no topo do card */
+  border-top-right-radius: 12px; /* Bordas arredondadas no topo do card */
+}
+
+.student-icon {
+  width: 24px; /* Define a largura do ícone do aluno */
+  height: 24px; /* Define a altura do ícone do aluno */
+  border-radius: 50%; /* Torna o ícone redondo */
+  margin-right: 8px; /* Espaço entre o ícone e o texto do nome do aluno */
+  vertical-align: middle; /* Alinha verticalmente o ícone com o texto */
+}
+
+.session-title {
+  font-size: 16px; /* Tamanho do texto do título */
+}
+
+.session-subtitle {
+  display: flex; /* Para que o ícone e o texto fiquem na mesma linha */
+  align-items: center; /* Alinha verticalmente o ícone e o texto */
+  font-size: 14px; /* Tamanho do texto do subtítulo */
+  color: #666; /* Cor do texto do subtítulo */
+}
+
+.action-container {
+  display: flex;
+  justify-content: flex-end; /* Alinha o botão à direita */
+  margin-top: 10px; /* Espaço acima do botão */
+}
+
+.watch-button {
+  display: flex; /* Para alinhar ícone e texto */
+  align-items: center; /* Alinha verticalmente o ícone e o texto */
+}
+
+.watch-icon {
+  margin-right: 4px; /* Espaço entre o ícone e o texto do botão */
+}

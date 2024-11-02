@@ -1,183 +1,186 @@
 .page-container {
-    padding: 16px;
-    background-color: #f9faff; /* Azul claro de fundo */
-  }
-  
-  h1 {
-    font-size: 2rem;
-    color: #0a74da;
-  }
-  
-  .subtitle {
-    color: #666;
-    margin-bottom: 24px;
-  }
-  
-  .turma-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  
-  .turma-select {
-    min-width: 150px;
-  }
-  
-  .alunos-fotos {
-    display: flex;
-    align-items: center;
-  }
-  
-  .alunos-fotos .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 8px;
-  }
-  
-  .media-info {
-    display: flex;
-    gap: 24px;
-    margin-top: 16px;
-  }
-  
-  .media-card {
-    background: #eef7ff;
-    padding: 16px;
-    border-radius: 8px;
-    text-align: center;
-    color: #0a74da;
-  }
-  
-  .ranking-section {
-    margin-top: 24px;
-  }
-  
-  .ranking-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .ranking-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px;
-    border-radius: 8px;
-    background-color: #e0f2ff;
-  }
-  
-  .status-groups {
-    display: flex;
-    gap: 16px;
-    margin-top: 24px;
-  }
-  
-  .status-card {
-    width: 100px;
-    padding: 16px;
-    border-radius: 8px;
-    color: #333;
-    text-align: center;
-  }
-  
-  .rounded-card {
-    border-radius: 12px;
-    color: #333;
-  }
-  
-  .alunos-tabela-container {
-    margin-top: 24px;
-  }
-  
-  .alunos-tabela {
-    width: 100%;
-    border-spacing: 0 8px; /* Espaçamento entre as linhas */
-  }
-  
-  .aluno-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .alunos-tabela th {
-    background-color: #84c1fa;
-    color: white;
-    padding: 12px;
-    
-  }
-  
-  .alunos-tabela td {
-    background-color: #e4effa;
-    padding: 12px;
-    
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-  }
-  
-  .chip {
-    padding: 4px 8px;
-    border-radius: 16px;
-    font-size: 0.875rem;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .red {
-    background-color: #ff5252;
-  }
-  
-  .yellow {
-    background-color: #ffeb3b;
-    color: #333;
-  }
-  
-  .green {
-    background-color: #81c784;
-  }
-  
-  .blue-card {
-    background-color: #e0f2ff;
-    color: #0a74da;
-  }
-  
-  .blue-background {
-    background-color: #e0f2ff;
-  }
-  
-  .media-baixa {
-    color: #ff5252;
-  }
-  
-  .media-alta {
-    color: #81c784;
-  }
-  .info-section {
-    display: flex;
-    flex-wrap: wrap; /* Permite quebra de linha quando necessário */
-    gap: 16px; /* Espaçamento entre as seções */
-    margin-top: 24px;
-  }
-  
-  .media-info {
-    display: flex;
-    flex-direction: column; /* Para empilhar os cards de média */
-    gap: 16px; /* Espaçamento entre os cards de média */
-    flex: 1; /* Para ocupar espaço na linha */
-    min-width: 200px; /* Largura mínima para a seção de média */
-  }
-  
-  .ranking-section,
-  .status-groups {
-    flex: 1; /* Para ocupar espaço igual na linha */
-    min-width: 200px; /* Largura mínima para as seções */
-  }
-  
-  
+  padding: 16px;
+  background-color: #f9faff; /* Azul claro de fundo */
+}
+
+h1 {
+  font-size: 2rem;
+  color: #0a74da;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.turma-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.turma-select {
+  min-width: 150px;
+}
+
+.alunos-fotos {
+  display: flex;
+  align-items: center;
+}
+
+.alunos-fotos .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.media-info {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.media-card {
+  background: #eef7ff;
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  color: #0a74da;
+}
+
+.ranking-section {
+  margin-top: 24px;
+}
+
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #e0f2ff;
+}
+
+.status-groups {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.status-card {
+  width: 100px;
+  padding: 16px;
+  border-radius: 8px;
+  color: #333;
+  text-align: center;
+}
+
+.rounded-card {
+  border-radius: 12px;
+  color: #333;
+}
+
+.alunos-tabela-container {
+  margin-top: 24px;
+}
+
+.tabela-scroll {
+  overflow-x: auto; /* Permite rolagem horizontal */
+  -webkit-overflow-scrolling: touch; /* Suporte para iOS */
+}
+
+.alunos-tabela {
+  width: 100%;
+  border-spacing: 0 8px; /* Espaçamento entre as linhas */
+  min-width: 600px; /* Define uma largura mínima para a tabela */
+}
+
+.aluno-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alunos-tabela th {
+  background-color: #84c1fa;
+  color: white;
+  padding: 12px;
+}
+
+.alunos-tabela td {
+  background-color: #e4effa;
+  padding: 12px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.chip {
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  color: #fff;
+  text-align: center;
+}
+
+.red {
+  background-color: #ff5252;
+}
+
+.yellow {
+  background-color: #ffeb3b;
+  color: #333;
+}
+
+.green {
+  background-color: #81c784;
+}
+
+.blue-card {
+  background-color: #e0f2ff;
+  color: #0a74da;
+}
+
+.blue-background {
+  background-color: #e0f2ff;
+}
+
+.media-baixa {
+  color: #ff5252;
+}
+
+.media-alta {
+  color: #81c784;
+}
+
+.info-section {
+  display: flex;
+  flex-wrap: wrap; /* Permite quebra de linha quando necessário */
+  gap: 16px; /* Espaçamento entre as seções */
+  margin-top: 24px;
+}
+
+.media-info {
+  display: flex;
+  flex-direction: column; /* Para empilhar os cards de média */
+  gap: 16px; /* Espaçamento entre os cards de média */
+  flex: 1; /* Para ocupar espaço na linha */
+  min-width: 200px; /* Largura mínima para a seção de média */
+}
+
+.ranking-section,
+.status-groups {
+  flex: 1; /* Para ocupar espaço igual na linha */
+  min-width: 200px; /* Largura mínima para as seções de ranking e grupos */
+}

@@ -18,18 +18,21 @@ export class SessionsRecordedComponent {
       studentName: 'Ana Souza',
       className: 'Turma A',
       image: 'https://via.placeholder.com/300x150?text=Gravada+1',
+      studentAvatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Round&hairColor=Black&facialHairType=BeardMedium&clotheType=Shirt&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light',
     },
     {
       title: 'Gravação: Treinamento VR',
       studentName: 'Pedro Lima',
       className: 'Turma B',
       image: 'https://via.placeholder.com/300x150?text=Gravada+2',
+      studentAvatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Wayfarers&hairColor=Brown&facialHairType=BeardMedium&clotheType=Shirt&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light',
     },
     {
       title: 'Gravação: Treinamento VR',
       studentName: 'Fernanda Alves',
       className: 'Turma C',
       image: 'https://via.placeholder.com/300x150?text=Gravada+3',
+      studentAvatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairCurly&accessoriesType=Round&hairColor=Blonde&facialHairType=BeardMedium&clotheType=Shirt&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light',
     },
   ];
 

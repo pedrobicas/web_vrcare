@@ -38,7 +38,7 @@
   border-radius: 4px;
 }
 
-/* Ajuste do item ativo */
+/* Ajuste do item ativo */  
 .mat-list-item-active {
   background-color: #e3f2fd;
   color: #1976d2;
@@ -55,8 +55,7 @@
 }
 
 .app-title {
-  font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #0a74da;
 }
 
@@ -73,6 +72,10 @@
   font-weight: normal;
   font-size: 1.2rem;
   color: #555; /* Cor do subtítulo */
+}
+.logo {
+  height: 40px; /* Ajuste conforme necessário */
+  margin-right: 10px; /* Espaçamento */
 }
 
 /* Ajustes para responsividade */

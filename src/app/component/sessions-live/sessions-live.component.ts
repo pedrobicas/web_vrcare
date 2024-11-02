@@ -18,35 +18,25 @@ export class SessionsLiveComponent {
       studentName: 'João Silva',
       className: 'Turma A',
       image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
+      avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Round&hairColor=Black&facialHairType=BeardMedium&clotheType=Shirt&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light',
     },
     {
       title: 'Sessão de Prática de Cirurgia - Ao Vivo',
       studentName: 'Maria Oliveira',
       className: 'Turma B',
       image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
+      avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Round&hairColor=Brown&facialHairType=BeardMedium&clotheType=Blazer&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light',
     },
     {
       title: 'Sessão de Treinamento VR - Ao Vivo',
       studentName: 'Carlos Pereira',
       className: 'Turma C',
       image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
-    },
-    {
-      title: 'Sessão de Treinamento VR - Ao Vivo',
-      studentName: 'Carlos Pereira',
-      className: 'Turma C',
-      image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
-    },
-    {
-      title: 'Sessão de Treinamento VR - Ao Vivo',
-      studentName: 'Carlos Pereira',
-      className: 'Turma C',
-      image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
+      avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Round&hairColor=Blonde&facialHairType=BeardMedium&clotheType=Shirt&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light',
     },
   ];
 
   joinSession(session: any) {
-    // Lógica para participar da sessão
     console.log('Participando da sessão:', session.title);
   }
 }

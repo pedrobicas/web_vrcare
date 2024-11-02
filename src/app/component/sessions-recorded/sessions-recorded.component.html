@@ -1,17 +1,21 @@
 <div class="sessions-recorded-container">
-    <div class="sessions-cards-container">
-      <mat-card *ngFor="let session of recordedSessions" class="session-card">
-        <img [src]="session.image" alt="Imagem da Sessão" class="session-image" />
-        <mat-card-header>
-          <mat-card-title>{{ session.title }}</mat-card-title>
-          <mat-card-subtitle>
-            Aluno: {{ session.studentName }} - Turma: {{ session.className }}
-          </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <button mat-button (click)="viewSession(session)">Assistir</button>
-        </mat-card-content>
-      </mat-card>
-    </div>
+  <div class="sessions-cards-container">
+    <mat-card *ngFor="let session of recordedSessions" class="session-card">
+      <img [src]="session.image" alt="Imagem da Sessão" class="session-image" />
+      <mat-card-header>
+        <mat-card-title class="session-title">{{ session.title }}</mat-card-title>
+        <mat-card-subtitle class="session-subtitle">
+          <img [src]="session.studentAvatar" alt="Avatar de {{ session.studentName }}" class="student-icon" />
+          Aluno: {{ session.studentName }} - Turma: {{ session.className }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="session-content">
+        <div class="action-container">
+          <button mat-button class="watch-button" (click)="viewSession(session)">
+            <mat-icon class="watch-icon" aria-hidden="true">play_arrow</mat-icon> Assistir
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
-  
+</div>

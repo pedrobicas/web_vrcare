@@ -1,20 +1,24 @@
 <div class="sessions-live-container">
-    <div class="sessions-cards-container">
-      <mat-card *ngFor="let session of upcomingSessions" class="session-card">
-        <img [src]="session.image" alt="Imagem da Sessão" class="session-image" />
-        <mat-card-header>
-          <mat-card-title>
-            <mat-icon class="live-icon">live_tv</mat-icon>
-            {{ session.title }}
-          </mat-card-title>
-          <mat-card-subtitle>
-            Aluno: {{ session.studentName }} - Turma: {{ session.className }}
-          </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <button mat-button (click)="joinSession(session)">Participar</button>
-        </mat-card-content>
-      </mat-card>
-    </div>
+  <div class="sessions-cards-container">
+    <mat-card *ngFor="let session of upcomingSessions" class="session-card">
+      <img [src]="session.image" alt="Imagem da Sessão" class="session-image" />
+      <mat-card-header>
+        <mat-card-title class="session-title">
+          <mat-icon class="live-icon">live_tv</mat-icon>
+          {{ session.title }}
+        </mat-card-title>
+        <mat-card-subtitle class="session-subtitle">
+          <img [src]="session.avatarUrl" alt="Avatar de {{ session.studentName }}" class="student-avatar" />
+          Aluno: {{ session.studentName }} - Turma: {{ session.className }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="action-container">
+          <button mat-button class="join-button" (click)="joinSession(session)">
+            Participar
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
-  
+</div>

@@ -16,7 +16,7 @@
 /* Cards Styling */
 mat-card {
   border-radius: 12px; /* Bordas arredondadas */
-  background-color: white; /* Cor de fundo dos cartões */
+  background-color: #F0F7FB; /* Cor de fundo dos cartões */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra dos cartões */
   transition: transform 0.2s, box-shadow 0.2s; /* Efeito ao passar o mouse */
 }
