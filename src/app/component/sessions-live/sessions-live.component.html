@@ -1,10 +1,11 @@
 <div class="sessions-live-container">
   <div class="sessions-cards-container">
     <mat-card *ngFor="let session of upcomingSessions" class="session-card">
+      <div class="live-indicator">Ao Vivo</div>
       <img [src]="session.image" alt="Imagem da Sessão" class="session-image" />
+      <div class="divider"></div>
       <mat-card-header>
         <mat-card-title class="session-title">
-          <mat-icon class="live-icon">live_tv</mat-icon>
           {{ session.title }}
         </mat-card-title>
         <mat-card-subtitle class="session-subtitle">

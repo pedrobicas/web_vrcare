@@ -14,43 +14,48 @@
 .sidenav mat-toolbar {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #1976d2; /* Azul principal do projeto */
+  color: #1976d2; /* Azul principal */
   text-align: center;
 }
 
-.mat-list-item {
+.list a {
   display: flex;
   align-items: center;
   padding: 12px;
-  color: #8d9fb1; /* Cor do texto no sidenav */
+  color: #97afc7; /* Cor do texto no sidenav */
   font-weight: 500;
+  text-decoration: none;
 }
 
 .menu-icon {
   vertical-align: middle;
   margin-right: 16px;
   font-size: 1.5rem;
-  color: #1976d2; /* Ícones azuis */
+  color: #97afc7; /* Ícones azuis */
 }
 
-.mat-list-item:hover {
-  background-color: #e3f2fd; /* Cor de hover para os itens do sidenav */
-  border-radius: 4px;
+.list a:hover {
+  color: #1566b8;
+}
+.list a:hover .menu-icon {
+  color: #1566b8;
 }
 
-/* Ajuste do item ativo */  
+/* Estilo do item ativo */
 .mat-list-item-active {
-  background-color: #e3f2fd;
-  color: #1976d2;
+  color: #1566b8 !important;
+}
+.mat-list-item-active .menu-icon {
+  color: #1566b8; /* Ícones azuis */
 }
 
 /* Estilos da barra superior */
 .app-toolbar {
   display: flex;
   align-items: center;
-  padding: 0 16px;
-  background-color: #ffffff;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  padding: 8px 16px;
+  background-color: transparent; /* Fundo transparente */
+  box-shadow: none;
   z-index: 1;
 }
 
@@ -64,7 +69,7 @@
 }
 
 .app-subtitle-container {
-  padding: 16px; /* Adicionando espaçamento */
+  padding: 16px; /* Espaçamento */
   text-align: center; /* Centraliza o subtítulo */
 }
 
@@ -73,9 +78,10 @@
   font-size: 1.2rem;
   color: #555; /* Cor do subtítulo */
 }
+
 .logo {
-  height: 40px; /* Ajuste conforme necessário */
-  margin-right: 10px; /* Espaçamento */
+  height: 40px;
+  margin-right: 10px;
 }
 
 /* Ajustes para responsividade */
@@ -85,5 +91,19 @@
   }
   .sidenav-container {
     height: auto;
+  }
+
+  .app-toolbar {
+    padding: 8px;
+  }
+
+  .app-title {
+    font-size: 1.2rem;
+    text-align: center;
+    flex: 1;
+  }
+
+  button.mat-icon-button {
+    font-size: 1.5rem;
   }
 }

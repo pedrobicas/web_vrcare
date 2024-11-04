@@ -21,24 +21,50 @@
     <div class="media-info">
       <div class="media-card">
         <p>Média de pontuação</p>
-        <h2>{{ mediaPontuacao }}</h2>
+        <h1>{{ mediaPontuacao }}</h1>
       </div>
       <div class="media-card">
         <p>Média de treinamentos concluídos</p>
-        <h2>{{ mediaTreinamentosConcluidos }}</h2>
+        <h1>{{ mediaTreinamentosConcluidos }}</h1>
       </div>
     </div>
 
     <div class="ranking-section">
-      <h3>Ranking</h3>
-      <div class="ranking-list">
-        <div *ngFor="let aluno of ranking" class="ranking-item">
-          <span class="ranking-position">{{ aluno.posicao }}</span>
-          <p class="ranking-name">{{ aluno.nome }}</p>
-          <span class="ranking-treinamentos">{{ aluno.treinamentos }}</span>
-        </div>
-      </div>
+      <mat-card class="ranking-card">
+        <mat-card-header>
+          <mat-card-title>Ranking</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="ranking-list">
+            <div *ngFor="let aluno of ranking; let i = index" class="ranking-item">
+              
+              <div class="aluno-info">
+                <img [src]="aluno.avatar" [alt]="aluno.nome" class="avatar" />
+                <div class="info-container">
+                  <p class="ranking-name">{{ aluno.nome }}</p>
+                  <div class="ranking-details">
+                    <div class="detail-container">
+                      <span class="detail-label">Treinamentos: </span>
+                      <span class="ranking-treinamentos">{{ aluno.treinamentos }}</span>
+                    </div>
+                    <div class="detail-container">
+                      <span class="detail-label">Média: </span>
+                      <span class="ranking-media">{{ aluno.media }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ranking-position">{{ i + 1 }}º</div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
+    
+    
+    
+    
+    
 
     <div class="status-groups">
       <div *ngFor="let grupo of grupos" [ngStyle]="{ 'background-color': grupo.cor }" class="status-card">
