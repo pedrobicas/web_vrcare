@@ -1,18 +1,22 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table'; // Para a tabela
-import { MatPaginator } from '@angular/material/paginator'; // Para o paginator
-import { CommonModule } from '@angular/common'; // Para pipes
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 interface Student {
   name: string;
   email: string;
-  completedTrainings: string; // Treinamentos, ex: "3/10"
-  class: string; // Turma do aluno
-  averageGrade: number; // Média de notas
-  priority: number; // Número de tarefas prioritárias
-  progressing: number; // Número de tarefas em progresso
-  mastering: number; // Número de tarefas dominadas
-  avatar: string; // URL do avatar
+  completedTrainings: string;
+  class: string;
+  averageGrade: number;
+  priority: number;
+  progressing: number;
+  mastering: number;
+  avatar: string;
 }
 
 @Component({
@@ -21,15 +25,16 @@ interface Student {
   imports: [
     CommonModule,
     MatTableModule,
-    MatPaginator
+    MatPaginatorModule,
+    MatSortModule
   ],
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.css']
 })
 export class StudentsComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  // Adicione mais alunos conforme necessário
   students: Student[] = [
     { 
       name: 'Carlos Oliveira', 
@@ -132,27 +137,30 @@ export class StudentsComponent implements AfterViewInit {
     }
   ];
 
-  studentsDataSource = new MatTableDataSource<Student>(this.students); // Corrigido para inicializar corretamente
-
+  studentsDataSource = new MatTableDataSource<Student>(this.students);
   displayedColumns: string[] = ['avatar', 'name', 'completedTrainings', 'averageGrade', 'class', 'priority', 'progressing', 'mastering'];
 
   constructor() {}
 
   ngAfterViewInit() {
-    this.studentsDataSource.paginator = this.paginator; // Associar o paginator ao dataSource
+    this.studentsDataSource.paginator = this.paginator;
+    this.studentsDataSource.sort = this.sort;
   }
 
-  getPriorityClass(priority: number): string {
-    return 'priority';
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.studentsDataSource.filter = filterValue.trim().toLowerCase();
   }
+
   getBarColor(averageGrade: number): string {
     if (averageGrade < 5) {
-      return 'red-bar'; // Classe para barra vermelha
+      return 'red-bar';
     } else if (averageGrade >= 5 && averageGrade < 8) {
-      return 'yellow-bar'; // Classe para barra amarela
+      return 'yellow-bar';
     } else {
-      return 'green-bar'; // Classe para barra verde
+      return 'green-bar';
     }
   }
+  
   
 }

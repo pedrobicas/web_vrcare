@@ -1,10 +1,10 @@
 <div class="students-container">
-  <h2>Lista de Alunos</h2>
   <div class="table-responsive">
-    <table mat-table [dataSource]="studentsDataSource" class="styled-table">
+    <table mat-table [dataSource]="studentsDataSource" matSort class="styled-table">
+      
       <!-- Coluna: Avatar -->
       <ng-container matColumnDef="avatar">
-        <th mat-header-cell *matHeaderCellDef> Avatar </th>
+        <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let student">
           <img [src]="student.avatar" alt="{{ student.name }}" class="student-avatar"/>
         </td>
@@ -12,19 +12,19 @@
 
       <!-- Coluna: Nome Completo -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Nome Completo </th>
-        <td mat-cell *matCellDef="let student"> {{ student.name }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome Completo</th>
+        <td mat-cell *matCellDef="let student">{{ student.name }}</td>
       </ng-container>
 
       <!-- Coluna: Treinamentos -->
       <ng-container matColumnDef="completedTrainings">
-        <th mat-header-cell *matHeaderCellDef> Treinamentos </th>
-        <td mat-cell *matCellDef="let student"> {{ student.completedTrainings }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Treinamentos</th>
+        <td mat-cell *matCellDef="let student">{{ student.completedTrainings }}</td>
       </ng-container>
 
-      <!-- Coluna: Média -->
+      <!-- Coluna: Média (Barra de Progresso) -->
       <ng-container matColumnDef="averageGrade">
-        <th mat-header-cell *matHeaderCellDef> Média </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Média</th>
         <td mat-cell *matCellDef="let student">
           <div class="progress-bar-container">
             <div 
@@ -40,39 +40,40 @@
 
       <!-- Coluna: Turma -->
       <ng-container matColumnDef="class">
-        <th mat-header-cell *matHeaderCellDef> Turma </th>
-        <td mat-cell *matCellDef="let student"> {{ student.class }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Turma</th>
+        <td mat-cell *matCellDef="let student">{{ student.class }}</td>
       </ng-container>
 
-      <!-- Coluna: Prioritário -->
+      <!-- Coluna: Prioritário (com cor) -->
       <ng-container matColumnDef="priority">
-        <th mat-header-cell *matHeaderCellDef> Prioritário </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Prioritário</th>
         <td mat-cell *matCellDef="let student">
-          <span class="priority">{{ student.priority }}</span>
+          <span class="circle priority">
+            {{ student.priority }}
+          </span>
         </td>
       </ng-container>
 
-      <!-- Coluna: Progredindo -->
+      <!-- Coluna: Progredindo (com cor) -->
       <ng-container matColumnDef="progressing">
-        <th mat-header-cell *matHeaderCellDef> Progredindo </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Progredindo</th>
         <td mat-cell *matCellDef="let student">
-          <span class="progressing">{{ student.progressing }}</span>
+          <span class="circle progressing">{{ student.progressing }}</span>
         </td>
       </ng-container>
 
-      <!-- Coluna: Dominando -->
+      <!-- Coluna: Dominando (com cor) -->
       <ng-container matColumnDef="mastering">
-        <th mat-header-cell *matHeaderCellDef> Dominando </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Dominando</th>
         <td mat-cell *matCellDef="let student">
-          <span class="mastering">{{ student.mastering }}</span>
+          <span class="circle mastering">{{ student.mastering }}</span>
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="student-row"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
 
-  <!-- Paginator -->
-  <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons class="paginator"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
 </div>

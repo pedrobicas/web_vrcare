@@ -3,16 +3,6 @@
   background-color: #f9faff; /* Azul claro de fundo */
 }
 
-h1 {
-  font-size: 2rem;
-  color: #0a74da;
-}
-
-.subtitle {
-  color: #666;
-  margin-bottom: 24px;
-}
-
 .turma-header {
   display: flex;
   align-items: center;
@@ -37,7 +27,10 @@ h1 {
 
 .media-info {
   display: flex;
-  gap: 24px;
+  flex-direction: column; /* Para empilhar os cards de média */
+  gap: 16px;
+  flex: 1;
+  min-width: 200px;
   margin-top: 16px;
 }
 
@@ -49,8 +42,14 @@ h1 {
   color: #0a74da;
 }
 
+.media-card h1 {
+  color: black;
+}
+
 .ranking-section {
   margin-top: 24px;
+  flex: 1;
+  min-width: 200px;
 }
 
 .ranking-list {
@@ -62,19 +61,61 @@ h1 {
 .ranking-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px;
+  gap: 12px;
+  padding: 12px;
   border-radius: 8px;
-  background-color: #e0f2ff;
+  background-color: #e4effa;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.ranking-card {
+  border-radius: 12px;
+  background-color: #e0ebf1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ranking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ranking-position {
+  width: 28px;
+  height: 28px;
+  background-color: #1976d2;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ranking-name {
+  margin: 0;
+  font-weight: 500;
+}
+
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
 }
 
 .status-groups {
   display: flex;
   gap: 16px;
   margin-top: 24px;
+  flex: 1;
+  min-width: 200px;
 }
 
-.status-card {
+.status-card, .rounded-card {
   width: 100px;
   padding: 16px;
   border-radius: 8px;
@@ -82,30 +123,19 @@ h1 {
   text-align: center;
 }
 
-.rounded-card {
-  border-radius: 12px;
-  color: #333;
-}
-
 .alunos-tabela-container {
   margin-top: 24px;
 }
 
 .tabela-scroll {
-  overflow-x: auto; /* Permite rolagem horizontal */
-  -webkit-overflow-scrolling: touch; /* Suporte para iOS */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .alunos-tabela {
   width: 100%;
-  border-spacing: 0 8px; /* Espaçamento entre as linhas */
-  min-width: 600px; /* Define uma largura mínima para a tabela */
-}
-
-.aluno-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  border-spacing: 0 8px;
+  min-width: 600px;
 }
 
 .alunos-tabela th {
@@ -124,6 +154,7 @@ h1 {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .chip {
@@ -147,13 +178,9 @@ h1 {
   background-color: #81c784;
 }
 
-.blue-card {
+.blue-card, .blue-background {
   background-color: #e0f2ff;
   color: #0a74da;
-}
-
-.blue-background {
-  background-color: #e0f2ff;
 }
 
 .media-baixa {
@@ -164,23 +191,28 @@ h1 {
   color: #81c784;
 }
 
-.info-section {
+.aluno-info {
   display: flex;
-  flex-wrap: wrap; /* Permite quebra de linha quando necessário */
-  gap: 16px; /* Espaçamento entre as seções */
-  margin-top: 24px;
+  align-items: center;
+  margin-right: 20px;
+  gap: 8px;
 }
 
-.media-info {
-  display: flex;
-  flex-direction: column; /* Para empilhar os cards de média */
-  gap: 16px; /* Espaçamento entre os cards de média */
-  flex: 1; /* Para ocupar espaço na linha */
-  min-width: 200px; /* Largura mínima para a seção de média */
+.treinamentos-label,
+.media-label {
+  font-size: 0.8em;
+  color: gray;
+  margin-top: 2px;
 }
 
-.ranking-section,
-.status-groups {
-  flex: 1; /* Para ocupar espaço igual na linha */
-  min-width: 200px; /* Largura mínima para as seções de ranking e grupos */
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ranking-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  margin-top: 2px;
 }
