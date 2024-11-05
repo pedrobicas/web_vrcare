@@ -4,19 +4,20 @@
 
 .sessions-cards-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  flex-wrap: wrap;  /* Impede que os cards quebrem para a linha seguinte */
+  gap: 20px;          /* Espaço entre os cards */
+  overflow-x: auto;   /* Permite rolar horizontalmente se os cards não couberem na tela */
 }
 
 .session-card {
-  width: 100%;
-  max-width: 300px;
+  width: 280px; /* Largura fixa para os cards */
   transition: transform 0.3s, box-shadow 0.3s;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0);
   overflow: hidden;
   position: relative; /* Necessário para posicionar o texto "Ao Vivo" */
+  background-color: #ebf7fd;
 }
 
 .session-card:hover {
@@ -31,8 +32,8 @@
 
 .live-indicator {
   position: absolute;
-  top: 125px;
-  left: 10px;
+  top: 115px;
+  left: 5px;
   background-color: rgba(255, 0, 0, 0.8);
   color: #fff;
   font-size: 14px;
@@ -46,25 +47,36 @@
   background-color: #ff0000;
 }
 
-.session-title {
-  font-size: 16px;
-}
-
-.session-subtitle {
+.card-header {
   display: flex;
   align-items: center;
-  font-size: 14px;
-  color: #666;
-  margin-top: 5px;
+  padding: 10px;
 }
 
 .student-avatar {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  margin-right: 8px;
+  margin-right: 12px;
   border: 2px solid #f0f0f0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.session-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.session-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.session-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
 }
 
 .action-container {

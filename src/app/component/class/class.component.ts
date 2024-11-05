@@ -7,6 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-class',
@@ -19,7 +22,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSortModule
   ],
   templateUrl: './class.component.html',
   styleUrls: ['./class.component.css'],
@@ -29,7 +33,7 @@ export class ClassComponent {
   mediaPontuacao = 7.7;
   mediaTreinamentosConcluidos = '6/10';
   displayedColumns: string[] = ['avatar', 'nome', 'treinamentos', 'posicao']; // Modificado para incluir avatar
-
+  @ViewChild(MatSort) sort!: MatSort;
   // Adicionando avatares ao ranking
   ranking = [
     { 
@@ -91,4 +95,5 @@ export class ClassComponent {
       avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Wayfarers&hairColor=Black&facialHairType=Blank&clotheType=Blazer&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light'
     },
   ];
+  
 }

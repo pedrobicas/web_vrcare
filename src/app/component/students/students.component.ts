@@ -39,7 +39,7 @@ export class StudentsComponent implements AfterViewInit {
     { 
       name: 'Carlos Oliveira', 
       email: 'carlos@example.com', 
-      completedTrainings: '3/10', 
+      completedTrainings: '3', 
       class: 'A', 
       averageGrade: 3.5, 
       priority: 7, 
@@ -50,7 +50,7 @@ export class StudentsComponent implements AfterViewInit {
     { 
       name: 'Luiza Souza', 
       email: 'luiza@example.com', 
-      completedTrainings: '7/10', 
+      completedTrainings: '7', 
       class: 'A', 
       averageGrade: 6.0, 
       priority: 3, 
@@ -61,7 +61,7 @@ export class StudentsComponent implements AfterViewInit {
     { 
       name: 'Marina Santos', 
       email: 'marina@example.com', 
-      completedTrainings: '10/10', 
+      completedTrainings: '10', 
       class: 'A', 
       averageGrade: 8.9, 
       priority: 1, 
@@ -72,7 +72,7 @@ export class StudentsComponent implements AfterViewInit {
     { 
       name: 'Pedro Almeida', 
       email: 'pedro@example.com', 
-      completedTrainings: '5/10', 
+      completedTrainings: '5', 
       class: 'B', 
       averageGrade: 4.2, 
       priority: 6, 
@@ -83,7 +83,7 @@ export class StudentsComponent implements AfterViewInit {
     { 
       name: 'Ana Lima', 
       email: 'ana@example.com', 
-      completedTrainings: '8/10', 
+      completedTrainings: '8', 
       class: 'B', 
       averageGrade: 9.5, 
       priority: 2, 
@@ -94,7 +94,7 @@ export class StudentsComponent implements AfterViewInit {
     { 
       name: 'Lucas Ferreira', 
       email: 'lucas@example.com', 
-      completedTrainings: '6/10', 
+      completedTrainings: '6', 
       class: 'C', 
       averageGrade: 5.0, 
       priority: 4, 
@@ -105,7 +105,7 @@ export class StudentsComponent implements AfterViewInit {
     { 
       name: 'Fernanda Costa', 
       email: 'fernanda@example.com', 
-      completedTrainings: '9/10', 
+      completedTrainings: '9', 
       class: 'C', 
       averageGrade: 7.5, 
       priority: 5, 
@@ -113,7 +113,6 @@ export class StudentsComponent implements AfterViewInit {
       mastering: 2,
       avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Prescription02&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light'
     }
-    // Adicione mais alunos conforme necessário
   ];
 
   displayedColumns: string[] = ['name', 'completedTrainings', 'averageGrade', 'class', 'priority', 'progressing', 'mastering'];

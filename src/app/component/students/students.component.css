@@ -1,5 +1,8 @@
 .alunos-tabela-container {
   margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
 }
 
 .tabela-scroll {
@@ -9,8 +12,9 @@
 
 .alunos-tabela {
   width: 100%;
-  border-spacing: 0 8px;
+  border-spacing: 0 10px;
   min-width: 600px;
+  background-color: #f5f7fb;
 }
 
 .alunos-tabela th {
@@ -19,20 +23,18 @@
   font-weight: bold;
   padding: 12px;
   border-bottom: 1px solid #ffffff00;
-  text-align: center; /* Centraliza o texto do cabeçalho */
+  text-align: center !important;
 }
 
 .alunos-tabela td {
-  background-color: #d7e9f3;
+  background-color: #ebf7fd;
   padding: 12px;
-  text-align: center; /* Centraliza o texto da célula */
   border-bottom: 1px solid #ffffff00;
 }
 
 .student-info {
   display: flex; /* Usado para alinhar o avatar e o nome horizontalmente */
   align-items: center; /* Centraliza verticalmente os itens dentro do contêiner */
-  
 }
 
 .avatar {
@@ -72,9 +74,9 @@
 
 /* Barra de progresso para média */
 .progress-bar {
-  height: 16px;
+  height: 30px;
   width: 100%;
-  background-color: #e0e0e0;
+  background-color: #f5f7fb;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -105,4 +107,61 @@
 
 .green-bar-fill {
   background-color: #A8DAB5;
+}
+
+/* Estilo global para o mat-paginator */
+mat-paginator {
+  display: flex;
+  justify-content: flex-end; /* Alinha o paginator à direita */
+  padding: 10px 0;
+  background-color: #f5f7fb; /* Cor de fundo do paginator */
+  font-size: 0.875rem; /* Tamanho da fonte */
+}
+
+/* Estilo dos botões do paginator */
+mat-paginator .mat-paginator-range-actions {
+  display: flex;
+  gap: 8px; /* Espaçamento entre os elementos */
+  align-items: center;
+}
+
+/* Estilo do seletor de páginas */
+mat-paginator .mat-select {
+  font-size: 0.875rem;
+  padding: 4px 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-shadow: none;
+}
+
+mat-paginator .mat-select:hover {
+  border-color: #888;
+}
+
+/* Estilo dos botões de navegação (anterior e próximo) */
+mat-paginator .mat-icon-button {
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 4px;
+  color: #333;
+  box-shadow: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover nos botões de navegação */
+mat-paginator .mat-icon-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Estilo para o texto de contagem (ex: "1-5 de 50") */
+mat-paginator .mat-paginator-range-label {
+  color: #333;
+  font-size: 0.875rem;
+  margin-right: 12px; /* Espaçamento entre o texto e os botões */
+}
+
+/* Adicionar espaçamento e bordas para separar os botões */
+mat-paginator .mat-button {
+  margin-right: 8px;
 }

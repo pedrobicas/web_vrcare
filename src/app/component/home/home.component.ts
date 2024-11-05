@@ -37,6 +37,11 @@ interface ScheduleEvent {
     avatar: string;
   }[];
 }
+interface Teacher {
+  name: string;
+  profession: string;
+  avatar: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -106,7 +111,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
       avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight2&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=PastelOrange&eyeType=Happy&eyebrowType=UpDown&mouthType=Smile&skinColor=Light'
     }
   ];
-
+  teacher: Teacher = {
+    name: 'Ana Lima',
+    profession: 'Laparoscopia Abdominal',
+    avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=BlazerSweater&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light'
+  };
   // Eventos do calendário
   todaySchedule: ScheduleEvent[] = [
     {
