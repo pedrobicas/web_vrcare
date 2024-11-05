@@ -1,106 +1,108 @@
-.students-container {
-  margin: 20px;
+.alunos-tabela-container {
+  margin-top: 24px;
 }
 
-h2 {
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.table-responsive {
+.tabela-scroll {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-table {
+.alunos-tabela {
   width: 100%;
-  border-collapse: collapse;
+  border-spacing: 0 8px;
+  min-width: 600px;
+}
+
+.alunos-tabela th {
+  background-color: transparent;
+  color: #333;
+  font-weight: bold;
+  padding: 12px;
+  border-bottom: 1px solid #ffffff00;
+  text-align: center; /* Centraliza o texto do cabeçalho */
+}
+
+.alunos-tabela td {
+  background-color: #d7e9f3;
+  padding: 12px;
+  text-align: center; /* Centraliza o texto da célula */
+  border-bottom: 1px solid #ffffff00;
+}
+
+.student-info {
+  display: flex; /* Usado para alinhar o avatar e o nome horizontalmente */
+  align-items: center; /* Centraliza verticalmente os itens dentro do contêiner */
+  
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px; /* Espaço entre o avatar e o nome */
+}
+
+.chip {
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  color: #fff;
+  text-align: center;
+}
+
+.red {
+  background-color: #F28B82; /* Tom de vermelho */
+}
+
+.yellow {
+  background-color: #FBBC04; /* Tom de amarelo */
+  color: #333;
+}
+
+.green {
+  background-color: #A8DAB5; /* Tom de verde */
+}
+
+/* Contêiner da barra de progresso */
+.progress-container {
+  width: 100%; /* Faz com que o contêiner ocupe toda a largura disponível */
+  position: relative; /* Para o posicionamento do texto */
+}
+
+/* Barra de progresso para média */
+.progress-bar {
+  height: 16px;
+  width: 100%;
+  background-color: #e0e0e0;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-mat-header-cell, mat-cell {
-  padding: 12px;
-  text-align: center;
-}
-
-mat-header-cell {
-  background-color: #f1f1f1;
-  color: #333;
-  font-weight: bold;
-}
-
-.student-row {
-  background-color: #f8f9fa;
-  transition: background-color 0.3s;
-}
-
-.student-row:hover {
-  background-color: #f5f5f5;
-}
-
-.student-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #f1f1f1;
-}
-
-.progress-bar {
-  border-radius: 12px;
-  padding: 5px 10px;
-  color: #ffffff;
-  font-weight: bold;
-  text-align: center;
-  display: inline-block;
-}
-
-.red-bar {
-  background-color: #ef5350;
-}
-
-.yellow-bar {
-  background-color: #ffeb3b;
-  color: #333;
-}
-
-.green-bar {
-  background-color: #81c784;
-}
-
-.circle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  font-weight: bold;
-  font-size: 14px;
-  color: white;
-}
-
-.priority {
-  background-color: #ef5350;
-}
-
-.progressing {
-  background-color: #ffeb3b;
-  color: #333;
-}
-
-.mastering {
-  background-color: #81c784;
-}
-
-.paginator {
-  margin-top: 20px;
-}
-
-.mat-paginator {
-  background-color: #fff;
+.progress-bar-fill {
+  height: 100%;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  position: absolute; /* Posiciona o texto em relação ao contêiner */
+  left: 50%; /* Centraliza horizontalmente */
+  top: 50%; /* Centraliza verticalmente */
+  transform: translate(-50%, -50%); /* Ajusta o centro do texto */
+  color: #000; /* Cor do texto preta */
+  font-size: 0.75rem; /* Ajuste o tamanho do texto conforme necessário */
+  font-weight: bold; /* Estilo do texto */
+}
+
+.red-bar-fill {
+  background-color: #F28B82;
+}
+
+.yellow-bar-fill {
+  background-color: #FBBC04;
+}
+
+.green-bar-fill {
+  background-color: #A8DAB5;
 }
