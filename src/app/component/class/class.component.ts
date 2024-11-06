@@ -7,6 +7,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-class',
@@ -19,7 +22,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSortModule
   ],
   templateUrl: './class.component.html',
   styleUrls: ['./class.component.css'],
@@ -28,14 +32,33 @@ export class ClassComponent {
   turmaSelecionada = 'Turma A';
   mediaPontuacao = 7.7;
   mediaTreinamentosConcluidos = '6/10';
-  displayedColumns: string[] = ['nome', 'treinamentos', 'media', 'precisaAtencao', 'progredindo', 'dominando'];
-  
-  // Aqui você pode adicionar URLs de avatares personalizados
+  displayedColumns: string[] = ['avatar', 'nome', 'treinamentos', 'posicao']; // Modificado para incluir avatar
+  @ViewChild(MatSort) sort!: MatSort;
+  // Adicionando avatares ao ranking
   ranking = [
-    { nome: 'Samuel Mendes', treinamentos: '10/10', posicao: 1 },
-    { nome: 'Carla Santos', treinamentos: '9/10', posicao: 2 },
-    { nome: 'Sofia Marques', treinamentos: '7/10', posicao: 3 },
+    { 
+      nome: 'Samuel Mendes', 
+      treinamentos: '10/10', 
+      media: 9.0, // Média do Samuel
+      posicao: 1,
+      avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Prescription02&hairColor=Brown&facialHairType=Blank&clotheType=Hoodie&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light' 
+    },
+    { 
+      nome: 'Carla Santos', 
+      treinamentos: '9/10', 
+      media: 8.5, // Média da Carla
+      posicao: 2,
+      avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairCurly&accessoriesType=Round&hairColor=Blonde&facialHairType=Blank&clotheType=Shirt&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light' 
+    },
+    { 
+      nome: 'Sofia Marques', 
+      treinamentos: '7/10', 
+      media: 7.5, // Média da Sofia
+      posicao: 3,
+      avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Wayfarers&hairColor=Black&facialHairType=Blank&clotheType=Blazer&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light' 
+    },
   ];
+  
 
   grupos = [
     { quantidade: 5, descricao: '25% da turma', media: 4.2, cor: '#ffdddd' },
@@ -72,4 +95,5 @@ export class ClassComponent {
       avatar: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Wayfarers&hairColor=Black&facialHairType=Blank&clotheType=Blazer&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light'
     },
   ];
+  
 }
