@@ -1,134 +1,167 @@
-.students-container {
-  margin: 20px;
+.alunos-tabela-container {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
 }
 
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 20px;
+.tabela-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.table-responsive {
-  overflow-x: auto; /* Permitir rolagem horizontal */
-}
-
-table {
+.alunos-tabela {
   width: 100%;
-  border-collapse: separate; /* Usar borda separada para arredondamento */
-  border-radius: 8px; /* Bordas arredondadas */
-  overflow: hidden; /* Para evitar que as bordas ultrapassem o arredondamento */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-spacing: 0 10px;
+  min-width: 600px;
+  background-color: #f5f7fb;
 }
 
-/* Estilos para as células da tabela */
-mat-header-cell, mat-cell {
-  padding: 12px;
-  text-align: center;
-}
-
-/* Estilos de cabeçalho */
-mat-header-cell {
-  background-color: #f1f1f1;
+.alunos-tabela th {
+  background-color: transparent;
   color: #333;
   font-weight: bold;
-  border-bottom: 2px solid #ddd; /* Borda de separação no cabeçalho */
+  padding: 12px;
+  border-bottom: 1px solid #ffffff00;
+  text-align: center !important;
 }
 
-/* Adicionando estilo para as linhas dos alunos */
-.student-row {
-  background-color: #ffffff; /* Cor de fundo branca para as linhas */
-  transition: background-color 0.3s; /* Transição suave para hover */
+.alunos-tabela td {
+  background-color: #ebf7fd;
+  padding: 12px;
+  border-bottom: 1px solid #ffffff00;
 }
 
-.student-row:hover {
-  background-color: #f5f5f5; /* Efeito de hover nas linhas */
+.student-info {
+  display: flex; /* Usado para alinhar o avatar e o nome horizontalmente */
+  align-items: center; /* Centraliza verticalmente os itens dentro do contêiner */
 }
 
-/* Estilos para o avatar do aluno */
-.student-avatar {
-  width: 40px;
-  height: 40px;
+.avatar {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: 2px solid #f1f1f1;
+  object-fit: cover;
+  margin-right: 8px; /* Espaço entre o avatar e o nome */
 }
 
-/* Estilos da barra de progresso */
-.progress-bar-container {
-  background-color: #fff; /* Cor de fundo da barra */
-  border-radius: 8px; /* Bordas arredondadas da barra */
-  overflow: hidden; /* Para manter a barra dentro dos limites */
-  height: 20px; /* Altura da barra de progresso */
-  position: relative; /* Para posicionar texto */
+.chip {
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  color: #fff;
+  text-align: center;
 }
 
+.red {
+  background-color: #F28B82; /* Tom de vermelho */
+}
+
+.yellow {
+  background-color: #FBBC04; /* Tom de amarelo */
+  color: #333;
+}
+
+.green {
+  background-color: #A8DAB5; /* Tom de verde */
+}
+
+/* Contêiner da barra de progresso */
+.progress-container {
+  width: 100%; /* Faz com que o contêiner ocupe toda a largura disponível */
+  position: relative; /* Para o posicionamento do texto */
+}
+
+/* Barra de progresso para média */
 .progress-bar {
-  height: 100%;
-  text-align: center; /* Centraliza o texto */
-  line-height: 20px; /* Alinha o texto verticalmente */
-  color: black; /* Cor do texto */
-}
-
-/* Estilos para o texto da barra de progresso */
-.progress-text {
-  position: absolute;
+  height: 30px;
   width: 100%;
-  left: 0;
-  top: 0;
-  text-align: center; /* Centraliza o texto */
-  font-weight: bold; /* Destaca o texto */
+  background-color: #f5f7fb;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-/* Estilos para os círculos de Prioritário, Progredindo e Dominando */
-.priority, .progressing, .mastering {
-  display: inline-flex;
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  position: absolute; /* Posiciona o texto em relação ao contêiner */
+  left: 50%; /* Centraliza horizontalmente */
+  top: 50%; /* Centraliza verticalmente */
+  transform: translate(-50%, -50%); /* Ajusta o centro do texto */
+  color: #000; /* Cor do texto preta */
+  font-size: 0.75rem; /* Ajuste o tamanho do texto conforme necessário */
+  font-weight: bold; /* Estilo do texto */
+}
+
+.red-bar-fill {
+  background-color: #F28B82;
+}
+
+.yellow-bar-fill {
+  background-color: #FBBC04;
+}
+
+.green-bar-fill {
+  background-color: #A8DAB5;
+}
+
+/* Estilo global para o mat-paginator */
+mat-paginator {
+  display: flex;
+  justify-content: flex-end; /* Alinha o paginator à direita */
+  padding: 10px 0;
+  background-color: #f5f7fb; /* Cor de fundo do paginator */
+  font-size: 0.875rem; /* Tamanho da fonte */
+}
+
+/* Estilo dos botões do paginator */
+mat-paginator .mat-paginator-range-actions {
+  display: flex;
+  gap: 8px; /* Espaçamento entre os elementos */
   align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  font-weight: bold;
-  font-size: 14px;
-  color: white;
 }
 
-.priority {
-  background-color: #ef5350; /* Vermelho */
-}
-
-.progressing {
-  background-color: #ffeb3b; /* Amarelo */
-  color: #333; /* Texto escuro para contraste */
-}
-
-.mastering {
-  background-color: #81c784; /* Verde */
-}
-
-/* Estilos do paginator */
-.paginator {
-  margin-top: 20px; /* Espaço entre a tabela e o paginator */
-}
-
-/* Estilo para o paginator */
-.mat-paginator {
+/* Estilo do seletor de páginas */
+mat-paginator .mat-select {
+  font-size: 0.875rem;
+  padding: 4px 10px;
   background-color: #fff;
-  border-radius: 8px; /* Bordas arredondadas no paginator */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-shadow: none;
 }
 
-/* Mantenha o paginator fixo no final da tabela */
-.mat-paginator .mat-paginator-page-size {
-  margin-right: 8px; /* Espaçamento entre opções de página */
-}
-.red-bar {
-  background-color: #f59c95; /* Vermelho */
+mat-paginator .mat-select:hover {
+  border-color: #888;
 }
 
-.yellow-bar {
-  background-color: #fff7b1; /* Amarelo */
+/* Estilo dos botões de navegação (anterior e próximo) */
+mat-paginator .mat-icon-button {
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 4px;
+  color: #333;
+  box-shadow: none;
+  transition: background-color 0.3s ease;
 }
 
-.green-bar {
-  background-color: #9ace9c; /* Verde */
+/* Efeito de hover nos botões de navegação */
+mat-paginator .mat-icon-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Estilo para o texto de contagem (ex: "1-5 de 50") */
+mat-paginator .mat-paginator-range-label {
+  color: #333;
+  font-size: 0.875rem;
+  margin-right: 12px; /* Espaçamento entre o texto e os botões */
+}
+
+/* Adicionar espaçamento e bordas para separar os botões */
+mat-paginator .mat-button {
+  margin-right: 8px;
 }

@@ -1,78 +1,73 @@
-<div class="students-container">
-  <h2>Lista de Alunos</h2>
-  <div class="table-responsive">
-    <table mat-table [dataSource]="studentsDataSource" class="styled-table">
-      <!-- Coluna: Avatar -->
-      <ng-container matColumnDef="avatar">
-        <th mat-header-cell *matHeaderCellDef> Avatar </th>
-        <td mat-cell *matCellDef="let student">
-          <img [src]="student.avatar" alt="{{ student.name }}" class="student-avatar"/>
-        </td>
-      </ng-container>
+<div class="alunos-tabela-container">
+  <div class="tabela-scroll">
+    <table mat-table [dataSource]="studentsDataSource" matSort class="alunos-tabela">
+      <!-- Colunas para os dados da tabela -->
 
-      <!-- Coluna: Nome Completo -->
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Nome Completo </th>
-        <td mat-cell *matCellDef="let student"> {{ student.name }} </td>
-      </ng-container>
-
-      <!-- Coluna: Treinamentos -->
-      <ng-container matColumnDef="completedTrainings">
-        <th mat-header-cell *matHeaderCellDef> Treinamentos </th>
-        <td mat-cell *matCellDef="let student"> {{ student.completedTrainings }} </td>
-      </ng-container>
-
-      <!-- Coluna: Média -->
-      <ng-container matColumnDef="averageGrade">
-        <th mat-header-cell *matHeaderCellDef> Média </th>
-        <td mat-cell *matCellDef="let student">
-          <div class="progress-bar-container">
-            <div 
-              class="progress-bar" 
-              [ngStyle]="{ width: (student.averageGrade / 10 * 100) + '%' }"
-              [ngClass]="getBarColor(student.averageGrade)"
-            >
-              <span class="progress-text">{{ student.averageGrade | number: '1.1-1' }}</span>
-            </div>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome Completo </th>
+        <td mat-cell *matCellDef="let student" class="text-center">
+          <div class="student-info">
+            <img [src]="student.avatar" alt="Avatar" class="avatar" />
+            <span>{{ student.name }}</span>
           </div>
         </td>
       </ng-container>
 
-      <!-- Coluna: Turma -->
+      <ng-container matColumnDef="completedTrainings">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Treinamentos </th>
+        <td mat-cell *matCellDef="let student" class="text-center"> {{ student.completedTrainings }}/10 </td>
+      </ng-container>
+
+      <ng-container matColumnDef="averageGrade">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Média </th>
+        <td mat-cell *matCellDef="let student" class="text-center">
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div
+                class="progress-bar-fill"
+                [ngClass]="{
+                  'red-bar-fill': student.averageGrade < 5,
+                  'yellow-bar-fill': student.averageGrade >= 5 && student.averageGrade < 8,
+                  'green-bar-fill': student.averageGrade >= 8
+                }"
+                [ngStyle]="{ width: student.averageGrade * 10 + '%' }"></div>
+            </div>
+            <span class="progress-label">{{ student.averageGrade }}</span>
+          </div>
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="class">
-        <th mat-header-cell *matHeaderCellDef> Turma </th>
-        <td mat-cell *matCellDef="let student"> {{ student.class }} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Turma </th>
+        <td mat-cell *matCellDef="let student" class="text-center"> {{ student.class }} </td>
       </ng-container>
 
-      <!-- Coluna: Prioritário -->
       <ng-container matColumnDef="priority">
-        <th mat-header-cell *matHeaderCellDef> Prioritário </th>
-        <td mat-cell *matCellDef="let student">
-          <span class="priority">{{ student.priority }}</span>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prioritário </th>
+        <td mat-cell *matCellDef="let student" class="text-center">
+          <span class="chip" [ngClass]="{ 'green': student.priority <= 2, 'yellow': student.priority > 2 && student.priority < 5, 'red': student.priority >= 5 }">
+            {{ student.priority }}
+          </span>
         </td>
       </ng-container>
 
-      <!-- Coluna: Progredindo -->
       <ng-container matColumnDef="progressing">
-        <th mat-header-cell *matHeaderCellDef> Progredindo </th>
-        <td mat-cell *matCellDef="let student">
-          <span class="progressing">{{ student.progressing }}</span>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progredindo </th>
+        <td mat-cell *matCellDef="let student" class="text-center">
+          <span class="chip yellow">{{ student.progressing }}</span>
         </td>
       </ng-container>
 
-      <!-- Coluna: Dominando -->
       <ng-container matColumnDef="mastering">
-        <th mat-header-cell *matHeaderCellDef> Dominando </th>
-        <td mat-cell *matCellDef="let student">
-          <span class="mastering">{{ student.mastering }}</span>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dominando </th>
+        <td mat-cell *matCellDef="let student" class="text-center">
+          <span class="chip green">{{ student.mastering }}</span>
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="student-row"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
-
-  <!-- Paginator -->
-  <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons class="paginator"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
 </div>

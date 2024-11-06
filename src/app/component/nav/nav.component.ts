@@ -50,9 +50,9 @@ export class NavComponent {
 
   updatePageTitle(url: string) {
     switch (url) {
-      case '/':
+      case '/home':
         this.pageTitle = 'Visão Geral';
-        this.pageSubtitle = 'Uma visão geral do sistema'; // Exemplo de subtítulo
+        this.pageSubtitle = 'Seja bem-vindo ao VRCare+';
         break;
       case '/sessions-live':
         this.pageTitle = 'Sessões ao vivo';
@@ -60,7 +60,7 @@ export class NavComponent {
         break;
       case '/sessions-recorded':
         this.pageTitle = 'Sessões gravadas';
-        this.pageSubtitle = 'Reviva as sessões gravadas';
+        this.pageSubtitle = 'Acesse as sessões gravadas';
         break;
       case '/students':
         this.pageTitle = 'Alunos';
@@ -69,10 +69,6 @@ export class NavComponent {
       case '/class':
         this.pageTitle = 'Turmas';
         this.pageSubtitle = 'Detalhes das turmas';
-        break;
-      default:
-        this.pageTitle = 'Painel de Controle';
-        this.pageSubtitle = 'Seja bem-vindo ao VRCare+! Aqui você pode gerenciar suas atividades de forma eficaz.';
         break;
     }
   }
@@ -84,8 +80,8 @@ export class NavComponent {
   closeDrawer(drawer: any) {
     this.isHandset$.subscribe(isHandset => {
       if (isHandset) {
-        drawer.close(); // Fecha o drawer apenas se for em um dispositivo móvel
+        drawer.close();
       }
-    }).unsubscribe(); // Limpa a assinatura após o uso
+    }).unsubscribe();
   }
 }

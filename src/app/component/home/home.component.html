@@ -70,15 +70,20 @@
 
   <!-- Right Side Section -->
   <div class="right-column">
+     <!-- Novo cartão de perfil -->
+    
     <!-- Calendar Section -->
-    <mat-card class="calendar-card">
+    <mat-card class="calendar-card">  
+        <div class="profile-info">
+          <img [src]="teacher.avatar" alt="{{teacher.name}}" class="avatar">
+          <div class="details">
+            <h2>{{teacher.name}}</h2>
+            <p>{{teacher.profession}}</p>
+          </div>
+        </div>
       <mat-card-content>
         <mat-calendar></mat-calendar>
       </mat-card-content>
-    </mat-card>
-
-    <!-- Schedule Section -->
-    <mat-card class="schedule-card">
       <mat-card-header>
         <mat-card-title>Programação de Hoje</mat-card-title>
       </mat-card-header>

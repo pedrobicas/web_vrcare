@@ -14,29 +14,44 @@ import { MatIconModule } from '@angular/material/icon';
 export class SessionsLiveComponent {
   upcomingSessions = [
     {
-      title: 'Sessão Treinamento VR - Ao Vivo',
-      studentName: 'João Silva',
+      studentName: 'Rafael Costa',
       className: 'Turma A',
+      image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
+      avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads02&accessoriesType=Round&hairColor=Brown&facialHairType=BeardMedium&clotheType=Shirt&eyeType=Squint&eyebrowType=Default&mouthType=Smile&skinColor=Light',
+    },
+    {
+      studentName: 'Mariana Lima',
+      className: 'Turma B',
+      image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
+      avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairFrizzle&accessoriesType=Round&hairColor=Blonde&facialHairType=BeardLight&clotheType=Hoodie&eyeType=Happy&eyebrowType=RaisedExcited&mouthType=Smile&skinColor=Light',
+    },
+    {
+      studentName: 'Felipe Martins',
+      className: 'Turma C',
       image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
       avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Round&hairColor=Black&facialHairType=BeardMedium&clotheType=Shirt&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light',
     },
     {
-      title: 'Sessão de Prática de Cirurgia - Ao Vivo',
-      studentName: 'Maria Oliveira',
-      className: 'Turma B',
+      studentName: 'Henrique Silva',
+      className: 'Turma D',
       image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
-      avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Round&hairColor=Brown&facialHairType=BeardMedium&clotheType=Blazer&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light',
+      avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Round&hairColor=Blonde&facialHairType=BeardLight&clotheType=Suit&eyeType=Surprised&eyebrowType=Default&mouthType=Smile&skinColor=Light',
     },
     {
-      title: 'Sessão de Treinamento VR - Ao Vivo',
-      studentName: 'Carlos Pereira',
-      className: 'Turma C',
+      studentName: 'Juliana Barbosa',
+      className: 'Turma E',
       image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
-      avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Round&hairColor=Blonde&facialHairType=BeardMedium&clotheType=Shirt&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light',
+      avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Round&hairColor=Black&facialHairType=BeardLight&clotheType=Blazer&eyeType=Happy&eyebrowType=Default&mouthType=Smile&skinColor=Light',
+    },
+    {
+      studentName: 'Leonardo Rocha',
+      className: 'Turma F',
+      image: 'https://via.placeholder.com/300x150?text=Ao+Vivo',
+      avatarUrl: 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairFrizzle&accessoriesType=Round&hairColor=Black&facialHairType=BeardLight&clotheType=Shirt&eyeType=Squint&eyebrowType=Default&mouthType=Smile&skinColor=Light',
     },
   ];
 
   joinSession(session: any) {
-    console.log('Participando da sessão:', session.title);
+    console.log('Participando da sessão:', session.studentName);
   }
 }

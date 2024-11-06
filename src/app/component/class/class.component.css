@@ -1,16 +1,6 @@
 .page-container {
   padding: 16px;
-  background-color: #f9faff; /* Azul claro de fundo */
-}
-
-h1 {
-  font-size: 2rem;
-  color: #0a74da;
-}
-
-.subtitle {
-  color: #666;
-  margin-bottom: 24px;
+  background-color: #f5f7fb; /* Azul claro de fundo */
 }
 
 .turma-header {
@@ -37,7 +27,10 @@ h1 {
 
 .media-info {
   display: flex;
-  gap: 24px;
+  flex-direction: column; /* Para empilhar os cards de média */
+  gap: 16px;
+  flex: 1;
+  min-width: 200px;
   margin-top: 16px;
 }
 
@@ -49,8 +42,14 @@ h1 {
   color: #0a74da;
 }
 
+.media-card h1 {
+  color: black;
+}
+
 .ranking-section {
   margin-top: 24px;
+  flex: 1;
+  min-width: 200px;
 }
 
 .ranking-list {
@@ -62,29 +61,88 @@ h1 {
 .ranking-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px;
+  gap: 12px;
+  padding: 12px;
   border-radius: 8px;
-  background-color: #e0f2ff;
+  background-color: #e4effa;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.ranking-card {
+  border-radius: 12px;
+  background-color: #e0ebf1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ranking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ranking-position {
+  width: 28px;
+  height: 28px;
+  background-color: #1976d2;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ranking-name {
+  margin: 0;
+  font-weight: 500;
+}
+
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
 }
 
 .status-groups {
   display: flex;
   gap: 16px;
   margin-top: 24px;
+  flex: 1; /* Faz a seção ocupar o espaço disponível */
 }
 
+/* Estilo dos grupos de status */
 .status-card {
-  width: 100px;
   padding: 16px;
   border-radius: 8px;
   color: #333;
   text-align: center;
+  transition: flex-grow 0.3s ease; /* Transição suave para mudança de largura */
+  flex: 1; /* Ajusta a largura baseando-se na proporção do flex */
 }
 
-.rounded-card {
-  border-radius: 12px;
-  color: #333;
+/* Ajuste a largura com base na porcentagem de alunos */
+.status-card[data-percentage="low"] {
+  flex: 1; /* Baixa porcentagem - menor espaço */
+}
+
+.status-card[data-percentage="medium"] {
+  flex: 2; /* Média porcentagem - espaço médio */
+}
+
+.status-card[data-percentage="high"] {
+  flex: 3; /* Alta porcentagem - maior espaço */
+}
+
+.status-card h2 {
+  font-size: 1.5rem; /* Ajuste o tamanho do texto conforme necessário */
+}
+
+.status-card p {
+  font-size: 0.875rem; /* Ajuste o tamanho do texto conforme necessário */
 }
 
 .alunos-tabela-container {
@@ -92,38 +150,41 @@ h1 {
 }
 
 .tabela-scroll {
-  overflow-x: auto; /* Permite rolagem horizontal */
-  -webkit-overflow-scrolling: touch; /* Suporte para iOS */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .alunos-tabela {
   width: 100%;
-  border-spacing: 0 8px; /* Espaçamento entre as linhas */
-  min-width: 600px; /* Define uma largura mínima para a tabela */
-}
-
-.aluno-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  border-spacing: 0 10px;
+  min-width: 600px;
+  background-color: #f5f7fb;
 }
 
 .alunos-tabela th {
-  background-color: #84c1fa;
-  color: white;
+  background-color: transparent;
+  color: #333;
+  font-weight: bold;
   padding: 12px;
+  border-bottom: 1px solid #ffffff00;
 }
 
 .alunos-tabela td {
-  background-color: #e4effa;
+  background-color: #ebf7fd;
   padding: 12px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ffffff00;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
 }
 
 .avatar {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .chip {
@@ -135,25 +196,22 @@ h1 {
 }
 
 .red {
-  background-color: #ff5252;
+  background-color: #F28B82;
 }
 
 .yellow {
-  background-color: #ffeb3b;
+  background-color: #FBBC04;
   color: #333;
 }
 
 .green {
-  background-color: #81c784;
+  background-color: #A8DAB5;
 }
 
-.blue-card {
-  background-color: #e0f2ff;
-  color: #0a74da;
-}
-
+.blue-card,
 .blue-background {
   background-color: #e0f2ff;
+  color: #0a74da;
 }
 
 .media-baixa {
@@ -164,23 +222,71 @@ h1 {
   color: #81c784;
 }
 
-.info-section {
+.aluno-info {
   display: flex;
-  flex-wrap: wrap; /* Permite quebra de linha quando necessário */
-  gap: 16px; /* Espaçamento entre as seções */
-  margin-top: 24px;
+  align-items: center;
+  margin-right: 20px;
+  gap: 8px;
 }
 
-.media-info {
-  display: flex;
-  flex-direction: column; /* Para empilhar os cards de média */
-  gap: 16px; /* Espaçamento entre os cards de média */
-  flex: 1; /* Para ocupar espaço na linha */
-  min-width: 200px; /* Largura mínima para a seção de média */
+.treinamentos-label,
+.media-label {
+  font-size: 0.8em;
+  color: gray;
+  margin-top: 2px;
 }
 
-.ranking-section,
-.status-groups {
-  flex: 1; /* Para ocupar espaço igual na linha */
-  min-width: 200px; /* Largura mínima para as seções de ranking e grupos */
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ranking-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  margin-top: 2px;
+  flex-wrap: wrap;
+}
+
+/* Estilo das barras de progresso */
+.progress-container {
+  width: 100%;
+  position: relative;
+}
+
+.progress-bar {
+  height: 30px;
+  width: 100%;
+  background-color: #f5f7fb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.red-bar-fill {
+  background-color: #F28B82;
+}
+
+.yellow-bar-fill {
+  background-color: #FBBC04;
+}
+
+.green-bar-fill {
+  background-color: #A8DAB5;
 }

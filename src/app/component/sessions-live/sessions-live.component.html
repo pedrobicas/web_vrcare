@@ -1,16 +1,19 @@
 <div class="sessions-live-container">
   <div class="sessions-cards-container">
     <mat-card *ngFor="let session of upcomingSessions" class="session-card">
-      <img [src]="session.image" alt="Imagem da Sessão" class="session-image" />
+      <div class="live-indicator">Ao Vivo</div>
+      <div class="image-placeholder"></div> <!-- Espaço vazio onde a imagem ficaria -->
+      <div class="divider"></div>
       <mat-card-header>
-        <mat-card-title class="session-title">
-          <mat-icon class="live-icon">live_tv</mat-icon>
-          {{ session.title }}
-        </mat-card-title>
-        <mat-card-subtitle class="session-subtitle">
-          <img [src]="session.avatarUrl" alt="Avatar de {{ session.studentName }}" class="student-avatar" />
-          Aluno: {{ session.studentName }} - Turma: {{ session.className }}
-        </mat-card-subtitle>
+        <img [src]="session.avatarUrl" alt="Avatar de {{ session.studentName }}" class="student-avatar" />
+        <div class="session-info">
+          <mat-card-title class="session-title">
+            {{ session.studentName }}
+          </mat-card-title>
+          <mat-card-subtitle class="session-subtitle">
+            Turma: {{ session.className }}
+          </mat-card-subtitle>
+        </div>
       </mat-card-header>
       <mat-card-content>
         <div class="action-container">
@@ -22,3 +25,4 @@
     </mat-card>
   </div>
 </div>
+  
